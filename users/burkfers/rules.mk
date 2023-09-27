@@ -1,3 +1,5 @@
+-include $(USER_PATH)/features/rules.mk
+
 INTROSPECTION_KEYMAP_C = burkfers.c
 
 TAP_DANCE_ENABLE = yes

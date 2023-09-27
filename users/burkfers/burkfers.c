@@ -28,27 +28,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             }
             return false; // no further processing
-    case DOTCOMM: // thanks wimads!
-        if (record->event.pressed && record->tap.count == 2) {//swap DOTCOMM state
-                dotcomm_state = !dotcomm_state; //swap state
-                tap_code16(KC_BSPC);            //remove character output from first tap
-            } else if (record->event.pressed && dotcomm_state) {//when state is true
-                if (mod_shift) { //send comm when shifted
-                    unregister_mods(mod_shift);
-                    tap_code16(KC_COMM);
-                    register_mods(mod_shift);
-                } else { //send dot by default
-                    tap_code16(KC_DOT);
+        case DOTCOMM: // thanks wimads!
+            if (record->event.pressed && record->tap.count == 2) {//swap DOTCOMM state
+                    dotcomm_state = !dotcomm_state; //swap state
+                    tap_code16(KC_BSPC);            //remove character output from first tap
+                } else if (record->event.pressed && dotcomm_state) {//when state is true
+                    if (mod_shift) { //send comm when shifted
+                        unregister_mods(mod_shift);
+                        tap_code16(KC_COMM);
+                        register_mods(mod_shift);
+                    } else { //send dot by default
+                        tap_code16(KC_DOT);
+                    }
+                } else if (record->event.pressed) {//when state is false
+                    if (mod_shift) { //send dot when shifted
+                        unregister_mods(mod_shift);
+                        tap_code16(KC_DOT);
+                        register_mods(mod_shift);
+                    } else { //send comm by default
+                        tap_code16(KC_COMM);
+                    }
                 }
-            } else if (record->event.pressed) {//when state is false
-                if (mod_shift) { //send dot when shifted
-                    unregister_mods(mod_shift);
-                    tap_code16(KC_DOT);
-                    register_mods(mod_shift);
-                } else { //send comm by default
-                    tap_code16(KC_COMM);
-                }
-            }
+                return false;
+        case C_PTRD:
+            layer_off(LAYER_POINTER);
             return false;
         default:
             return true; // process elsewhere
@@ -57,83 +60,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void matrix_scan_user(void) {
 }
-
-void u_td_fn_boot(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        reset_keyboard();
-    }
-}
-
-#ifdef EE_HANDS
-void u_td_fn_make_l(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        // adapted from quantum.c, since we can't tap quantum codes
-
-        SEND_STRING_DELAY("qmk flash ", TAP_CODE_DELAY);
-        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -bl uf2-split-left" SS_TAP(X_ENTER), TAP_CODE_DELAY);
-    }
-}
-void u_td_fn_make_r(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        // adapted from quantum.c, since we can't tap quantum codes
-
-        SEND_STRING_DELAY("qmk flash ", TAP_CODE_DELAY);
-        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -bl uf2-split-right " SS_TAP(X_ENTER), TAP_CODE_DELAY);
-    }
-}
-#else
-void u_td_fn_make(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        // adapted from quantum.c, since we can't tap quantum codes
-
-        SEND_STRING_DELAY("qmk flash ", TAP_CODE_DELAY);
-        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " " SS_TAP(X_ENTER), TAP_CODE_DELAY);
-    }
-}
-#endif
-
-void u_td_fn_sysrq_reisub(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        register_mods(MOD_LALT);
-        register_code(KC_PRINT_SCREEN);
-        wait_ms(50);
-        tap_code(KC_R);
-        wait_ms(50);
-        tap_code(KC_E);
-        wait_ms(50);
-        tap_code(KC_I);
-        wait_ms(50);
-        tap_code(KC_S);
-        wait_ms(50);
-        tap_code(KC_U);
-        wait_ms(50);
-        tap_code(KC_B);
-        unregister_code(KC_PRINT_SCREEN);
-        unregister_mods(MOD_LALT);
-    }
-}
-
-void u_td_fn_clr(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        eeconfig_disable();
-        soft_reset_keyboard();
-    }
-}
-
-tap_dance_action_t tap_dance_actions[] = {
-    [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
-    [U_TD_CLR] = ACTION_TAP_DANCE_FN(u_td_fn_clr),
-    [U_TD_PT_Z] = ACTION_TAP_DANCE_LAYER_MOVE(KC_Z, LAYER_POINTER),
-    [U_TD_PT_SLSH] = ACTION_TAP_DANCE_LAYER_MOVE(KC_SLSH, LAYER_POINTER),
-#ifdef EE_HANDS
-    [U_TD_MAKEL] = ACTION_TAP_DANCE_FN(u_td_fn_make_l),
-    [U_TD_MAKER] = ACTION_TAP_DANCE_FN(u_td_fn_make_r),
-#else
-    [U_TD_MAKE] = ACTION_TAP_DANCE_FN(u_td_fn_make),
-#endif
-    [U_TD_SYSRQ] = ACTION_TAP_DANCE_FN(u_td_fn_sysrq_reisub),
-};
-
 
 #ifdef RGB_MATRIX_ENABLE
 const HSV hsv_colors[] = {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "quantum.h"
+#include "features/features.h"
 
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
@@ -15,24 +16,10 @@ enum charybdis_keymap_layers {
 
 enum my_keycodes {
     C_LT = SAFE_RANGE, // CUSTOM_LAYERTOGGLE
+    C_PTRD, // pointer layer disable
 };
 
-enum {
-   U_TD_BOOT = 0,
-   U_TD_CLR,
-   U_TD_PT_Z,
-   U_TD_PT_SLSH,
-#ifdef EE_HANDS
-   U_TD_MAKER,
-   U_TD_MAKEL,
-#else
-   U_TD_MAKE,
-#endif
-   U_TD_SYSRQ,
-};
-
-#define DOTCOMM LT(10, KC_DOT)
-
+#define DOTCOMM LT(24, KC_DOT)
 
 #ifdef RGB_MATRIX_ENABLE
 enum colors {
