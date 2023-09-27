@@ -1,13 +1,11 @@
 #include "action_layer.h"
 #include QMK_KEYBOARD_H
-//#include "features/achordion.h"
 #include "quantum.h"
 #include "keycodes.h"
 #include "burkfers.h"
 #include "charybdis.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-   // if (!process_achordion(keycode, record)) { return false; }
 
     static bool dotcomm_state = true; // true=dot; false=comma
     const uint16_t mod_shift = get_mods() & MOD_MASK_SHIFT;
@@ -58,12 +56,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void matrix_scan_user(void) {
-  //achordion_task();
 }
 
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  return 500;
-}
 void u_td_fn_boot(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         reset_keyboard();
@@ -189,33 +183,6 @@ bool is_mouse_record_user(uint16_t keycode, keyrecord_t* record) {
         default:
             return false;
     }
-}
-
-bool achordion_chord(uint16_t tap_hold_keycode,
-                     keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode,
-                     keyrecord_t* other_record) {
-    if(layer_state_is(LAYER_POINTER)) { return true; } // don't use achordion on mouse layer
-
-    switch (tap_hold_keycode) {
-        case HOME_J:
-        case HOME_K:
-        case HOME_L:
-        case HOME_SCLN:
-            if (other_keycode == KC_ENT || other_keycode == LT(LAYER_SYM, KC_ENT)) { return true; } // allow gui+return as a one hand hold
-            break;
-        case LT(LAYER_FUN, KC_DEL): // combo result confuses achordion (has no handedness) - allow, because it's bilateral
-        case LT(LAYER_SYM, KC_ENT):
-        case LT(LAYER_MEDIA, KC_ESC):
-        case LT(LAYER_NAV, KC_SPC):
-        case LT(LAYER_POINTER, KC_TAB):
-        case LT(LAYER_NUM, KC_BSPC):
-        case DRGSCRL:
-        case SNIPING:
-            return true;
-    }
-    // Otherwise, follow the opposite hands rule.
-    return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 #ifdef THUMB_COMBOS
