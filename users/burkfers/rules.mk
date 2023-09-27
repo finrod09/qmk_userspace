@@ -1,6 +1,6 @@
 -include $(USER_PATH)/features/rules.mk
 
-INTROSPECTION_KEYMAP_C = burkfers.c
+SRC += $(USER_PATH)/burkfers.c
 
 TAP_DANCE_ENABLE = yes
 CAPS_WORD_ENABLE = yes
