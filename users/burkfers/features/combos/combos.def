@@ -23,8 +23,8 @@
 //};
 //#endif
 
-COMB(thumbcombo_base_right, LT(LAYER_FUN, KC_DEL), LT(LAYER_SYM, KC_ENT), LT(LAYER_NUM, KC_BSPC))
-COMB(thumbcombo_nav,        KC_DEL,                KC_ENT, KC_BSPC)
-COMB(thumbcombo_media,      KC_MUTE,               KC_MSTP, KC_MPLY)
+COMB(thumbcombo_base_right, LT(LAYER_FUN, KC_DEL),     LT(LAYER_SYM, KC_ENT), LT(LAYER_NUM, KC_BSPC))
+COMB(thumbcombo_nav,        KC_DEL,                    KC_ENT, KC_BSPC)
+COMB(thumbcombo_media,      KC_MUTE,                   KC_MSTP, KC_MPLY)
 
-
+COMB(thumbcombo_base_left,  LT(LAYER_POINTER, KC_TAB), LT(LAYER_MEDIA, KC_ESC), LT(LAYER_NAV, KC_SPC))
