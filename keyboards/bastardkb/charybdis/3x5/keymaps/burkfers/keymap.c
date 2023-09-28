@@ -43,11 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
         ___GACS_L___(   A,   S,   D,   F),    KC_G,       KC_H, ___GACS_R___(   J,   K,    L, QUOT),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-// TODO: switch-to-pointer hold actions
-//          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, PT_SLSH,
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
- LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), LT(LAYER_POINTER, KC_TAB),       LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
+ LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [LAYER_NUM] = LAYOUT(
@@ -82,8 +80,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
         KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,    XXXXXXX, XXXXXXX,  TD_CLR, TD_MAKE, TD_BOOT,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
-                          KC_APP,  KC_SPC,  KC_TAB,    XXXXXXX, XXXXXXX
-  //                   ╰───────────────────────────╯ ╰──────────────────╯
+                          KC_APP,  KC_SPC, QK_AREP,    XXXXXXX, XXXXXXX
+  //                   ╰──────────────────────────╯ ╰──────────────────╯
   ),
   [LAYER_MEDIA] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
