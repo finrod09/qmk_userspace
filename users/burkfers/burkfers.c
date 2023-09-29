@@ -11,7 +11,22 @@
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static bool dotcomm_state = true; // true=dot; false=comma
     const uint16_t mod_shift = get_mods() & MOD_MASK_SHIFT;
+
+    process_caps_word_lock(keycode, record);
+
     switch(keycode) {
+        case CAPS_WORD_LOCK:
+            // Toggle `caps_word_lock_on`
+            if (record->event.pressed) {
+                if (caps_word_lock_on) {
+                    caps_word_lock_disable();
+                    return false;
+                } else {
+                    caps_word_lock_enable();
+                    return false;
+                }
+            }
+            return false;
         case C_LT:
             if(record->event.pressed) {
                 static uint8_t current_default_layer = LAYER_BASE;

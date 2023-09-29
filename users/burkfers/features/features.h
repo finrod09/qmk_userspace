@@ -15,3 +15,5 @@
 #ifdef RGB_MATRIX_ENABLE
 #    include "features/rgb/rgb.h"
 #endif
+
+#include "features/caps_word/caps_word.h"

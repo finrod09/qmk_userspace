@@ -11,6 +11,8 @@
 #undef RGB_MATRIX_DEFAULT_MODE
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
 
+#define SPLIT_LED_STATE_ENABLE
+
 #define BILATERAL_COMBINATIONS
 // Requires Sunaku's endgame patch - https://github.com/manna-harbour/qmk_firmware/pull/56
 #define BILATERAL_COMBINATIONS_LIMIT_CHORD_TO_N_KEYS 4 /* GUI, Alt, Ctrl, Shift */
@@ -20,3 +22,5 @@
 #define BILATERAL_COMBINATIONS_ALLOW_SAMESIDED_AFTER 750 /* ms */
 #define BILATERAL_COMBINATIONS_TYPING_STREAK_TIMEOUT 160  /* ms */
 #define BILATERAL_COMBINATIONS_TYPING_STREAK_MODMASK (~MOD_MASK_SHIFT)
+
+#include "features/config.h"

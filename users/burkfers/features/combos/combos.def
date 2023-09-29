@@ -30,3 +30,5 @@ COMB(thumbcombo_media,      KC_MUTE,                   KC_MSTP, KC_MPLY)
 COMB(thumbcombo_base_left,  LT(LAYER_POINTER, KC_TAB), LT(LAYER_MEDIA, KC_ESC), LT(LAYER_NAV, KC_SPC))
 COMB(thcombo_base_left_alt, LT(LAYER_POINTER, KC_TAB), LT(LAYER_NAV, KC_SPC), QK_REP)
 COMB(thumbcombo_fun,        KC_TAB, KC_APP, KC_SPC)
+
+COMB(capsword,              CAPS_WORD_LOCK,                   LSFT_T(KC_F), RSFT_T(KC_J))

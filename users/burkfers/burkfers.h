@@ -17,6 +17,7 @@ enum charybdis_keymap_layers {
 enum my_keycodes {
     C_LT = SAFE_RANGE, // CUSTOM_LAYERTOGGLE
     C_PTRD, // pointer layer disable
+    CAPS_WORD_LOCK,
 };
 
 #define DOTCOMM LT(24, KC_DOT)
