@@ -6,6 +6,7 @@
 enum charybdis_keymap_layers {
     LAYER_QWERTY = 0,
     LAYER_COLEMAK,
+    LAYER_CANARY,
     LAYER_GAME,
     LAYER_NUM,
     LAYER_NAV,
@@ -16,6 +17,7 @@ enum charybdis_keymap_layers {
 };
 #define DF_QWER DF(LAYER_QWERTY)
 #define DF_COLE DF(LAYER_COLEMAK)
+#define DF_CANA DF(LAYER_CANARY)
 
 enum my_keycodes {
     C_LT = SAFE_RANGE, // CUSTOM_LAYERTOGGLE
