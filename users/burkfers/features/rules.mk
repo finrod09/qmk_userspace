@@ -1,4 +1,5 @@
-SRC += $(USER_PATH)/features/taps/tap_dances.c
+SRC += $(USER_PATH)/features/taps/tap_dances.c \
+       $(USER_PATH)/features/rgb/rgb.c
 
 #ifeq ($(strip $(COMBO_ENABLE)), yes)
 	VPATH += keyboards/gboards

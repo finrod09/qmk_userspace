@@ -6,7 +6,6 @@
 #include "charybdis.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
     static bool dotcomm_state = true; // true=dot; false=comma
     const uint16_t mod_shift = get_mods() & MOD_MASK_SHIFT;
     switch(keycode) {
@@ -57,47 +56,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true; // process elsewhere
     }
 }
-
-void matrix_scan_user(void) {
-}
-
-#ifdef RGB_MATRIX_ENABLE
-const HSV hsv_colors[] = {
-    [ hOFF]     = {  0,   0,   0},
-    [hPRPL]     = {205, 255, 255},
-    [hDPRP]     = {205, 255, 150},
-    [hPINK]     = {251, 223, 255},
-    [hDPNK]     = {251, 223, 155},
-    [hCYAN]     = {128, 255, 255},
-    [hLRED]     = {255, 239, 255},
-    [hBLUE]     = {170, 215, 221},
-    [hORNG]     = { 20, 208, 255},
-    [ hRED]     = {  0, 255, 255},
-    [hMGTA]     = {220, 255, 255},
-    [hYELO]     = { 15, 255, 255},
-    [hGREN]     = { 50, 255, 255},
-};
-
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-        int layer = get_highest_layer(layer_state|default_layer_state);
-
-        for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
-            for(uint8_t col = 0; col < MATRIX_COLS; ++col) {
-                uint8_t index = g_led_config.matrix_co[row][col];
-
-                if(led_min <= index && index <= led_max) {
-                    uint8_t color = pgm_read_byte(&ledmaps[layer][row][col]);
-                    HSV hsv = hsv_colors[color];
-                    if(hsv.s > 0)
-                        hsv.v = rgb_matrix_config.hsv.v;
-                    RGB rgb = hsv_to_rgb(hsv);
-                    rgb_matrix_set_color( index, rgb.r, rgb.g, rgb.b );
-                };
-            };
-        };
-    return false;
-}
-#endif
 
 bool is_mouse_record_user(uint16_t keycode, keyrecord_t* record) {
     switch(keycode) {
