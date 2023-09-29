@@ -29,16 +29,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case C_LT:
             if(record->event.pressed) {
-                static uint8_t current_default_layer = LAYER_BASE;
+                static uint8_t current_default_layer = LAYER_QWERTY;
                 switch(current_default_layer) {
-                    case LAYER_BASE:
+                    case LAYER_QWERTY:
                         default_layer_set(1UL << LAYER_GAME);
                         current_default_layer = LAYER_GAME;
                         break;
                     case LAYER_GAME:
                     default:
-                        default_layer_set(1UL << LAYER_BASE);
-                        current_default_layer = LAYER_BASE;
+                        default_layer_set(1UL << LAYER_QWERTY);
+                        current_default_layer = LAYER_QWERTY;
                         break;
                 };
             } else {

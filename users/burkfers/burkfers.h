@@ -4,7 +4,8 @@
 #include "features/features.h"
 
 enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
+    LAYER_QWERTY = 0,
+    LAYER_COLEMAK,
     LAYER_GAME,
     LAYER_NUM,
     LAYER_NAV,
@@ -13,6 +14,8 @@ enum charybdis_keymap_layers {
     LAYER_SYM,
     LAYER_POINTER,
 };
+#define DF_QWER DF(LAYER_QWERTY)
+#define DF_COLE DF(LAYER_COLEMAK)
 
 enum my_keycodes {
     C_LT = SAFE_RANGE, // CUSTOM_LAYERTOGGLE

@@ -30,6 +30,7 @@
 #define ALGR_O RALT_T(KC_O)
 #define ___GACS_L___(k01, k02, k03, k04) LGUI_T(KC_##k01), LALT_T(KC_##k02), LCTL_T(KC_##k03), LSFT_T(KC_##k04)
 #define ___GACS_R___(k01, k02, k03, k04) RSFT_T(KC_##k01), RCTL_T(KC_##k02), LALT_T(KC_##k03), RGUI_T(KC_##k04)
+#define ALG(k01) RALT_T(KC_##k01)
 
 #define PT_TOGG TG(LAYER_POINTER)
 
@@ -37,13 +38,24 @@
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [LAYER_BASE] = LAYOUT_wrapper(
+  [LAYER_QWERTY] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
           KC_Q,  ALGR_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,  ALGR_O,    KC_P,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
         ___GACS_L___(   A,   S,   D,   F),    KC_G,       KC_H, ___GACS_R___(   J,   K,    L, QUOT),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
+  // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
+ LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
+  //                   ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [LAYER_COLEMAK] = LAYOUT_wrapper(
+  // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
+          KC_Q,  ALGR_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,  ALG(Y), KC_QUOT,
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+        ___GACS_L___(   A,   R,   S,   T),    KC_G,       KC_M, ___GACS_R___(   N,   E,    I,   O),
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+          KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
  LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
   //                   ╰───────────────────────────╯ ╰──────────────────╯
@@ -107,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [LAYER_POINTER] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
-       RGB_VAI, _______, _______, _______, _______,   _______, _______, _______, _______, _______,
+       DF_QWER, DF_COLE, _______, _______,    C_LT,   _______, _______, _______, RGB_VAI, RGB_VAD,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        RGB_VAD, _______, _______, _______, _______,   KC_BTN4, KC_BTN5, _______, _______, _______,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
@@ -120,11 +132,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
         KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,      KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,
+       KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,      KC_H, KC_RSFT, KC_LCTL, KC_LALT, KC_LGUI,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                            KC_ESC,  KC_SPC,  KC_M,   _______, _______
+                            KC_ESC,  KC_SPC,  KC_M,   _______,    C_LT
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
@@ -133,7 +145,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef RGB_MATRIX_ENABLE
 // clang-format off
 const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [LAYER_BASE] = LAYOUT(
+  [LAYER_QWERTY] = LAYOUT(
+  // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ╰───────────────────────────────────┤ ├────────────────────────────────────╯
+                     hMGTA, hCYAN, hYELO,    hBLUE, hGREN
+  //               ╰─────────────────────╯ ╰──────────────╯
+  ),
+  [LAYER_COLEMAK] = LAYOUT(
   // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
         hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
   // ├───────────────────────────────────┤ ├────────────────────────────────────┤
