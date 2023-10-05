@@ -107,3 +107,15 @@ void shutdown_user(void) {
     rgb_matrix_update_pwm_buffers();
 #endif // RGB_MATRIX_ENABLE
 }
+
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(LAYER_MEDIA, KC_ESC):
+        case LT(LAYER_NAV, KC_SPC):
+        case LT(LAYER_NUM,KC_BSPC):
+        case LT(LAYER_SYM, KC_ENT):
+            return 0;
+        default:
+            return QUICK_TAP_TERM;
+    }
+}
