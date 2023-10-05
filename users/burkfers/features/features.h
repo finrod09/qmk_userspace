@@ -17,3 +17,5 @@
 #endif
 
 #include "features/caps_word/caps_word.h"
+
+#include "features/achordion/achordion.h"

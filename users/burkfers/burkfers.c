@@ -9,6 +9,8 @@
    CUSTOM KEYCODES
   *****************/
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_achordion(keycode, record)) { return false; }
+
     static bool dotcomm_state = true; // true=dot; false=comma
     const uint16_t mod_shift = get_mods() & MOD_MASK_SHIFT;
 
@@ -114,6 +116,8 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case LT(LAYER_NAV, KC_SPC):
         case LT(LAYER_NUM,KC_BSPC):
         case LT(LAYER_SYM, KC_ENT):
+        case LT(LAYER_POINTER, KC_TAB):
+        case LT(LAYER_FUN, KC_DEL):
             return 0;
         default:
             return QUICK_TAP_TERM;

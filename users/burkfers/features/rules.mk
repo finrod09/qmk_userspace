@@ -6,3 +6,6 @@ SRC += $(USER_PATH)/features/taps/tap_dances.c \
 	VPATH += keyboards/gboards
 	INTROSPECTION_KEYMAP_C = $(USER_PATH)/features/combos/combos.c
 #endif
+
+SRC += $(USER_PATH)/features/achordion/achordion.c \
+       $(USER_PATH)/features/achordion/achordion_callbacks.c \
