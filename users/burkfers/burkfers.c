@@ -79,26 +79,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 /******************
-       POINTER
-  *****************/
-bool is_mouse_record_user(uint16_t keycode, keyrecord_t* record) {
-    switch(keycode) {
-        case DRGSCRL:
-        case SNIPING:
-        case S_D_MOD:
-        case DPI_MOD:
-            return true;
-        default:
-            return false;
-    }
-}
-
-void pointing_device_init_user(void) {
-    set_auto_mouse_layer(LAYER_POINTER); // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
-    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
-}
-
-/******************
     USER CALLBACKS
   *****************/
 #ifdef RGB_MATRIX_ENABLE
