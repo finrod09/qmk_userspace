@@ -14,6 +14,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static bool dotcomm_state = true; // true=dot; false=comma
     const uint16_t mod_shift = get_mods() & MOD_MASK_SHIFT;
 
+    if (!process_layer_lock(keycode, record, L_LOCK)) { return false; }
     process_caps_word_lock(keycode, record);
 
     switch(keycode) {
@@ -69,9 +70,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     }
                 }
                 return false;
-        case C_PTRD:
-            layer_off(LAYER_POINTER);
-            return false;
         default:
             return true; // process elsewhere
     }
