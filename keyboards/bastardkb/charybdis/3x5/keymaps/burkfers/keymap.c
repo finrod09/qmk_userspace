@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
- LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
+ LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), LT(LAYER_POINTER, KC_TAB), LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [LAYER_COLEMAK] = LAYOUT_wrapper(
