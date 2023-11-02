@@ -85,11 +85,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       DF_QWER, DF_COLE, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       DF_QWER, DF_COLE, DF_CANA, XXXXXXX,    C_LT,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, CAPS_WORD_LOCK,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       TD_BOOT, TD_MAKE,  TD_CLR, XXXXXXX, XXXXXXX,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
+       TD_BOOT, TD_MAKE,  TD_CLR, XXXXXXX,    C_LT,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
                          XXXXXXX, XXXXXXX, XXXXXXX,    KC_BSPC,  KC_ENT
   //             ╰─────────────────────────────────╯ ╰──────────────────╯
@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,      KC_H, KC_RSFT, KC_LCTL, KC_LALT, KC_LGUI,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
+       KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,   KC_BTN2, KC_BTN1, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
                             KC_ESC,  KC_SPC,  KC_M,   _______,    C_LT
   //                   ╰───────────────────────────╯ ╰──────────────────╯
