@@ -85,20 +85,6 @@ void rgb_matrix_update_pwm_buffers(void);
 bool shutdown_user(bool jump_to_bootloader) {
     rgb_matrix_set_color_all(200, 10, 10);
     rgb_matrix_update_pwm_buffers();
-    return true;
+    return false;
 #endif // RGB_MATRIX_ENABLE
-}
-
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(LAYER_MEDIA, KC_ESC):
-        case LT(LAYER_NAV, KC_SPC):
-        case LT(LAYER_NUM,KC_BSPC):
-        case LT(LAYER_SYM, KC_ENT):
-        case LT(LAYER_POINTER, KC_TAB):
-        case LT(LAYER_FUN, KC_DEL):
-            return 0;
-        default:
-            return QUICK_TAP_TERM;
-    }
 }

@@ -1,0 +1,15 @@
+COMB(thumbcombo_base_right, LT(LAYER_FUN, KC_DEL),     LT(LAYER_SYM, KC_ENT), LT(LAYER_NUM, KC_BSPC))
+COMB(thumbcombo_nav,        KC_DEL,                    KC_ENT, KC_BSPC)
+COMB(thumbcombo_media,      KC_MUTE,                   KC_MSTP, KC_MPLY)
+
+COMB(thumbcombo_base_left,  LT(LAYER_POINTER, KC_TAB), LT(LAYER_MEDIA, KC_ESC), LT(LAYER_NAV, KC_SPC))
+COMB(thcombo_base_left_alt, LT(LAYER_POINTER, KC_TAB), LT(LAYER_NAV, KC_SPC), QK_REP)
+COMB(thumbcombo_fun,        KC_TAB,                    KC_APP, KC_SPC)
+
+COMB(capsword,              CAPS_WORD_LOCK,            LSFT_T(KC_F), RSFT_T(KC_J))
+
+COMB(mouse2,                KC_BTN2,                   KC_N, KC_H)
+COMB(mouse1,                KC_BTN1,                   KC_M, RSFT_T(KC_J))
+COMB(sniping,               SNIPING,                   KC_COMM, RCTL_T(KC_K))
+COMB(dragscroll,            DRGSCRL,                   KC_COMM, KC_DOT)
+COMB(caretscroll,           PM_MO(PM_CARET),                   KC_DOT, LALT_T(KC_L))

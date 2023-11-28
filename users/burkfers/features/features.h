@@ -8,10 +8,6 @@
 #    include "features/taps/tap_dances.h"
 #endif
 
-#ifdef COMBO_ENABLE
-#    include "features/combos/config.h"
-#endif
-
 #ifdef RGB_MATRIX_ENABLE
 #    include "features/rgb/rgb.h"
 #endif

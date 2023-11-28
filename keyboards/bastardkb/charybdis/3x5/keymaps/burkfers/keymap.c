@@ -20,6 +20,7 @@
 #include "quantum.h"
 #include QMK_KEYBOARD_H
 #include "burkfers.h"
+#include "g/keymap_combo.h"
 
 #define TD_BOOT TD(U_TD_BOOT)
 #define TD_CLR TD(U_TD_CLR)
@@ -270,3 +271,16 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 #endif
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(LAYER_MEDIA, KC_ESC):
+        case LT(LAYER_NAV, KC_SPC):
+        case LT(LAYER_NUM,KC_BSPC):
+        case LT(LAYER_SYM, KC_ENT):
+        case LT(LAYER_POINTER, KC_TAB):
+        case LT(LAYER_FUN, KC_DEL):
+            return 0;
+        default:
+            return QUICK_TAP_TERM;
+    }
+}

@@ -19,7 +19,7 @@
 #include "modifiers.h"
 #include "quantum.h"
 #include QMK_KEYBOARD_H
-#include "peep.h"
+#include "burkfers.h"
 #include "keymap_german.h"
 
 #define TD_BOOT TD(U_TD_BOOT)
