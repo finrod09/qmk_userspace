@@ -82,9 +82,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef RGB_MATRIX_ENABLE
 // Forward-declare this helper function since it is defined in rgb_matrix.c.
 void rgb_matrix_update_pwm_buffers(void);
-void shutdown_user(void) {
+bool shutdown_user(bool jump_to_bootloader) {
     rgb_matrix_set_color_all(200, 10, 10);
     rgb_matrix_update_pwm_buffers();
+    return true;
 #endif // RGB_MATRIX_ENABLE
 }
 
