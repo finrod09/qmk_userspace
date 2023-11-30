@@ -26,21 +26,3 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
-
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    if(IS_LAYER_ON(LAYER_POINTER)) {
-        return 0;
-    } else {
-        switch(tap_hold_keycode) {
-            case LT(LAYER_MEDIA, KC_ESC):
-            case LT(LAYER_NAV, KC_SPC):
-            case LT(LAYER_NUM,KC_BSPC):
-            case LT(LAYER_SYM, KC_ENT):
-            case LT(LAYER_POINTER, KC_TAB):
-            case LT(LAYER_FUN, KC_DEL):
-                return 0;
-            default:
-                return 600;
-        }
-    }
-}

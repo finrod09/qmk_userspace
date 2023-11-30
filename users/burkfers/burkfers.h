@@ -3,10 +3,17 @@
 #include "quantum.h"
 #include "features/features.h"
 
-enum charybdis_keymap_layers {
-    LAYER_QWERTY = 0,
-    LAYER_COLEMAK,
-    LAYER_CANARY,
+enum my_user_keycodes {
+    C_LT = QK_USER, // CUSTOM_LAYERTOGGLE
+    CAPS_WORD_LOCK,
+    L_LOCK,
+    QK_KM
+};
+
+enum user_layers {
+    LAYER_BASE = 0,
+    LAYER_BASE2,
+    LAYER_BASE3,
     LAYER_GAME,
     LAYER_NUM,
     LAYER_NAV,
@@ -14,15 +21,7 @@ enum charybdis_keymap_layers {
     LAYER_MEDIA,
     LAYER_SYM,
     LAYER_POINTER,
-};
-#define DF_QWER DF(LAYER_QWERTY)
-#define DF_COLE DF(LAYER_COLEMAK)
-#define DF_CANA DF(LAYER_CANARY)
-
-enum my_keycodes {
-    C_LT = SAFE_RANGE, // CUSTOM_LAYERTOGGLE
-    CAPS_WORD_LOCK,
-    L_LOCK,
+    LAYER_KM
 };
 
 #define DOTCOMM LT(24, KC_DOT)

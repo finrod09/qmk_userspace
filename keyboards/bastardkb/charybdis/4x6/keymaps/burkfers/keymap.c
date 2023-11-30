@@ -28,6 +28,11 @@
 #define TD_MAKL TD(U_TD_MAKEL)
 #define TD_SYSR TD(U_TD_SYSRQ)
 
+#define LAYER_QWERTY LAYER_BASE
+#define LAYER_CANARY LAYER_BASE2
+#define DF_QWER DF(LAYER_QWERTY)
+#define DF_CANA DF(LAYER_CANARY)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT(

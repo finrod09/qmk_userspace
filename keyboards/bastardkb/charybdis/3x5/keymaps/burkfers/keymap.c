@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "charybdis.h"
 #include "keycodes.h"
 #include "modifiers.h"
 #include "quantum.h"
@@ -37,6 +36,12 @@
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
+#define LAYER_QWERTY LAYER_BASE
+#define LAYER_CANARY LAYER_BASE2
+
+#define DF_QWER DF(LAYER_QWERTY)
+#define DF_CANA DF(LAYER_CANARY)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT_wrapper(
@@ -48,17 +53,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
  LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), LT(LAYER_POINTER, KC_TAB), LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
-  //                   ╰───────────────────────────╯ ╰──────────────────╯
-  ),
-  [LAYER_COLEMAK] = LAYOUT_wrapper(
-  // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-          KC_Q,  ALGR_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,  ALG(Y), KC_QUOT,
-  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-        ___GACS_L___(   A,   R,   S,   T),    KC_G,       KC_M, ___GACS_R___(   N,   E,    I,   O),
-  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-          KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,
-  // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
- LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [LAYER_CANARY] = LAYOUT_wrapper(
@@ -86,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       DF_QWER, DF_COLE, DF_CANA, XXXXXXX,    C_LT,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       DF_QWER, XXXXXXX, DF_CANA, XXXXXXX,    C_LT,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, CAPS_WORD_LOCK,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
@@ -158,17 +152,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format off
 const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT(
-  // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
-        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
-  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
-        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
-  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
-        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
-  // ╰───────────────────────────────────┤ ├────────────────────────────────────╯
-                     hMGTA, hCYAN, hYELO,    hBLUE, hGREN
-  //               ╰─────────────────────╯ ╰──────────────╯
-  ),
-  [LAYER_COLEMAK] = LAYOUT(
   // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
         hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
   // ├───────────────────────────────────┤ ├────────────────────────────────────┤
@@ -282,5 +265,23 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
             return 0;
         default:
             return QUICK_TAP_TERM;
+    }
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+    if(IS_LAYER_ON(LAYER_POINTER)) {
+        return 0;
+    } else {
+        switch(tap_hold_keycode) {
+            case LT(LAYER_MEDIA, KC_ESC):
+            case LT(LAYER_NAV, KC_SPC):
+            case LT(LAYER_NUM,KC_BSPC):
+            case LT(LAYER_SYM, KC_ENT):
+            case LT(LAYER_POINTER, KC_TAB):
+            case LT(LAYER_FUN, KC_DEL):
+                return 0;
+            default:
+                return 600;
+        }
     }
 }
