@@ -1,9 +1,9 @@
 {
     "userspace_version": "1.0",
     "build_targets": [
-        ["bastardkb/charybdis/4x6/v2/splinky_3", "peep"],
         ["bastardkb/charybdis/4x6/v2/splinky_3", "burkfers"],
         ["bastardkb/charybdis/3x5/v2/splinky_3", "burkfers"],
         ["bastardkb/dilemma/3x5_3", "burkfers"],
+        ["bastardkb/dilemma/4x6_4", "burkfers"],
     ]
 }
