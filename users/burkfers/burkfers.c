@@ -3,7 +3,6 @@
 #include "quantum.h"
 #include "keycodes.h"
 #include "burkfers.h"
-#include "charybdis.h"
 
 /******************
    CUSTOM KEYCODES
