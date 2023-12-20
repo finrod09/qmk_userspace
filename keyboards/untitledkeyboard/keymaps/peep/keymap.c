@@ -3,13 +3,20 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
+#include "quantum.h"
 
 enum my_layers {
   LAYER_BASE = 0,
   LAYER_LOWER
 };
+enum {
+  U_TD_BOOT = 0,
+  U_TD_CLR
+};
 
 #define LOWER MO(LAYER_LOWER)
+#define TD_BOOT TD(U_TD_BOOT)
+#define TD_CLR TD(U_TD_CLR)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_BASE] = LAYOUT(
@@ -29,13 +36,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_HOME,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11, 
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F12,  
+       _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F12,  
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ASTR, KC_PGUP,
+       _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,    TD_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, DE_ASTR, KC_PGUP,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN,  
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    TD_CLR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN,  
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                XXXXXXX, DE_CIRC, XXXXXXX, XXXXXXX, KC_MUTE,    XXXXXXX, XXXXXXX, _______,  KC_INS,  KC_END
+                _______, DE_CIRC, _______, XXXXXXX, KC_MUTE,    _______, _______, _______,  KC_INS,  KC_END
   //           ╰────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
     )
 };
@@ -54,3 +61,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
   return true;
 }
+
+void u_td_fn_boot(tap_dance_state_t *state, void *user_data) {
+  if (state->count == 2) {
+    reset_keyboard();
+  }
+}
+void u_td_fn_clr(tap_dance_state_t *state, void *user_data) {
+  if (state->count == 2) {
+    eeconfig_disable();
+    soft_reset_keyboard();
+  }
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+  [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
+  [U_TD_CLR] = ACTION_TAP_DANCE_FN(u_td_fn_clr)
+};
+
+
