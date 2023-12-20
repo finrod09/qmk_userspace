@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F12,  
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,    TD_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, DE_ASTR, KC_PGUP,
+       _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,    TD_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, DE_PLUS, KC_PGUP,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    TD_CLR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN,  
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
