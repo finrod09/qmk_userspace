@@ -8,6 +8,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      keyrecord_t* tap_hold_record,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) {
+    
     switch (other_keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
@@ -20,6 +21,9 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             break;
         case RGUI_T(KC_QUOT):
             if (other_keycode == KC_ENT) { return true; }
+            break;
+        case LT(LAYER_NUM, KC_M):
+            if (layer_state_is(LAYER_GAME)) { return true; }
             break;
   }
 

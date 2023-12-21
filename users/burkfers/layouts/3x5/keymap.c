@@ -19,6 +19,10 @@
 #define DF_QWER DF(LAYER_QWERTY)
 #define DF_CANA DF(LAYER_CANARY)
 
+#define M_NUM LT(LAYER_NUM, KC_M)
+
+#define GAME TG(LAYER_GAME)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT_wrapper(
@@ -57,11 +61,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       DF_QWER, XXXXXXX, DF_CANA, XXXXXXX,    C_LT,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       DF_QWER, XXXXXXX, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       TD_BOOT, TD_MAKE,  TD_CLR, XXXXXXX,    C_LT,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
+       TD_BOOT, TD_MAKE,  TD_CLR, XXXXXXX,    GAME,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
                          XXXXXXX, XXXXXXX, XXXXXXX,    KC_BSPC,  KC_ENT
   //             ╰─────────────────────────────────╯ ╰──────────────────╯
@@ -111,15 +115,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          _______, _______,  L_LOCK,   _______, _______
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [LAYER_GAME] = LAYOUT(
+  [LAYER_GAME] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
         KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,      KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,
+       KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,      KC_H, ___GACS_R___(   J,   K,   L, QUOT),
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT,    C_LT,
+       KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT,    GAME,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                            KC_ESC,  KC_SPC,  KC_M,   _______, MO(LAYER_NAV)
+                            KC_ESC,  KC_SPC, M_NUM,   _______, MO(LAYER_NAV)
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
@@ -261,4 +265,16 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
                 return 600;
         }
     }
+}
+
+bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    switch (combo_index) {
+        case game_rf_t:
+        case game_fv_g:
+            if (!layer_state_is(LAYER_GAME)) {
+                return false;
+            }
+    }
+
+    return true;
 }

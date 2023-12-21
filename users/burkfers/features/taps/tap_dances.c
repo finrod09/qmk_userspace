@@ -16,7 +16,7 @@ void u_td_fn_make_l(tap_dance_state_t *state, void *user_data) {
         // adapted from quantum.c, since we can't tap quantum codes
 
         SEND_STRING_DELAY("qmk flash ", TAP_CODE_DELAY);
-        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -bl uf2-split-left -j 0" SS_TAP(X_ENTER), TAP_CODE_DELAY);
+        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -bl uf2-split-left -j 0" SS_TAP(X_ENTER), 1);
     }
 }
 void u_td_fn_make_r(tap_dance_state_t *state, void *user_data) {
@@ -24,7 +24,7 @@ void u_td_fn_make_r(tap_dance_state_t *state, void *user_data) {
         // adapted from quantum.c, since we can't tap quantum codes
 
         SEND_STRING_DELAY("qmk flash ", TAP_CODE_DELAY);
-        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -bl uf2-split-right -j 0" SS_TAP(X_ENTER), TAP_CODE_DELAY);
+        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -bl uf2-split-right -j 0" SS_TAP(X_ENTER), 1);
     }
 }
 #else
@@ -32,8 +32,8 @@ void u_td_fn_make(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         // adapted from quantum.c, since we can't tap quantum codes
 
-        SEND_STRING_DELAY("qmk flash ", TAP_CODE_DELAY);
-        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -j 0" SS_TAP(X_ENTER), TAP_CODE_DELAY);
+        SEND_STRING_DELAY("qmk flash ", 1);
+        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -j 0" SS_TAP(X_ENTER), 1);
     }
 }
 #endif

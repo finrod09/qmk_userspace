@@ -5,3 +5,6 @@ COMB(thumbcombo_media,      KC_MUTE,                   KC_MSTP, KC_MPLY)
 COMB(thumbcombo_base_left,  LT(LAYER_POINTER, KC_TAB), LT(LAYER_MEDIA, KC_ESC), LT(LAYER_NAV, KC_SPC))
 COMB(thcombo_base_left_alt, LT(LAYER_POINTER, KC_TAB), LT(LAYER_NAV, KC_SPC), QK_REP)
 COMB(thumbcombo_fun,        KC_TAB,                    KC_APP, KC_SPC)
+
+COMB(game_rf_t,             KC_T,                      KC_R, KC_F)
+COMB(game_fv_g,             KC_G,                      KC_F, KC_V)
