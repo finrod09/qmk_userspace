@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
-#include "quantum.h"
+#include "peep.h"
 
 enum my_layers {
   LAYER_BASE = 0,
@@ -78,16 +78,3 @@ tap_dance_action_t tap_dance_actions[] = {
   [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
   [U_TD_CLR] = ACTION_TAP_DANCE_FN(u_td_fn_clr)
 };
-
-#ifdef OLED_ENABLE
-bool oled_task_user(void) {
-    // Host Keyboard Layer Status
-    oled_write_P(PSTR("Untitled Pieboard"), false);
-    
-    return false;
-}
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_180;
-}
-#endif
