@@ -9,6 +9,7 @@ enum my_layers {
   LAYER_BASE = 0,
   LAYER_LOWER
 };
+
 enum {
   U_TD_BOOT = 0,
   U_TD_CLR
@@ -36,11 +37,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_HOME,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11, 
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F12,  
+       _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,    OLED_VI, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F12,  
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,    TD_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, DE_PLUS, KC_PGUP,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    TD_CLR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN,  
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    TD_CLR,   KC_WIT, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN,  
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                 _______, DE_CIRC, _______, XXXXXXX, KC_MUTE,    _______, _______, _______,  KC_INS,  KC_END
   //           ╰────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
@@ -55,7 +56,7 @@ void keyboard_post_init_user(void) {
   //debug_mouse=true;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool process_record_km(uint16_t keycode, keyrecord_t *record) {
 #ifdef CONSOLE_ENABLE
     uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 #endif
