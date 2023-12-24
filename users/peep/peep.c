@@ -12,6 +12,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_km(keycode, record)) {
         return false;
     }
+#ifdef OLED_ENABLE
+    if (record->event.pressed && (keycode == KC_WHATISTHIS || (keycode == (keycode & 0xff)))) {
+        if (!oled_whatisthis_keypress(keycode, get_mods())) {
+            return false;
+        }
+    }
+#endif
 
     switch (keycode) {
 #ifdef OLED_ENABLE
@@ -29,10 +36,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
     }
 
-#ifdef OLED_ENABLE
-    if (record->event.pressed) {
-        oled_whatisthis_keypress(keycode);
-    }
-#endif
     return true;
 };
