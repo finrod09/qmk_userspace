@@ -45,6 +45,11 @@
 #define M_NUM LT(LAYER_NUM, KC_M)
 
 #define GAME TG(LAYER_GAME)
+#define MCRPD DF(LAYER_MACROPAD)
+
+enum km_layers {
+    LAYER_MACROPAD = LAYER_KM
+};
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -86,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
        DF_QWER, XXXXXXX, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
+       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   MCRPD,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        TD_BOOT, TD_MAKE,  TD_CLR, XXXXXXX,    GAME,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
@@ -147,6 +152,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT,    GAME,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
                             KC_ESC,  M_NUM, KC_SPC,   _______, MO(LAYER_NAV), KC_MUTE
+  //                   ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+  [LAYER_MACROPAD] = LAYOUT_wrapper(
+  // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,    KC_U,    KC_I,    KC_O,    KC_P,
+  // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
+       KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,      KC_H, ___GACS_R___(   J,   K,   L, QUOT),
+  // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
+       C(A(KC_1)), C(A(KC_2)), C(A(KC_3)), KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT, DF(LAYER_BASE),
+  // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
+                            KC_P,  M_NUM, KC_SPC,   _______, MO(LAYER_NAV), KC_MUTE
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
@@ -245,9 +261,20 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [LAYER_GAME] = LAYOUT_wrapper(
   // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
-        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+        hOFF,  hOFF, hPRPL,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
   // ├───────────────────────────────────┤ ├────────────────────────────────────┤
         hOFF, hPRPL, hPRPL, hPRPL,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ╰───────────────────────────────────┤ ├────────────────────────────────────╯
+                      hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF
+  //               ╰─────────────────────╯ ╰──────────────╯
+  ),
+  [LAYER_MACROPAD] = LAYOUT_wrapper(
+  // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
   // ├───────────────────────────────────┤ ├────────────────────────────────────┤
         hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
   // ╰───────────────────────────────────┤ ├────────────────────────────────────╯
@@ -312,6 +339,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [LAYER_NUM]        = {ENCODER_CCW_CW(RGB_VAD, RGB_VAI),  ENCODER_CCW_CW(RGB_SPD, RGB_SPI)},
     [LAYER_SYM]        = {ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
     [LAYER_GAME]       = {ENCODER_CCW_CW(KC_WH_D, KC_WH_U),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_MACROPAD]   = {ENCODER_CCW_CW(KC_WH_D, KC_WH_U),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
