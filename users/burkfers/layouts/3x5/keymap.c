@@ -11,7 +11,7 @@
 
 #define PT_TOGG TG(LAYER_POINTER)
 
-#define LAYOUT_wrapper(...) LAYOUT_split_3x5_3(__VA_ARGS__)
+#define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 #define LAYER_QWERTY LAYER_BASE
 #define LAYER_CANARY LAYER_BASE2
