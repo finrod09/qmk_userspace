@@ -1,0 +1,7 @@
+VIA_ENABLE = yes
+
+CONSOLE_ENABLE = yes
+DEBUG_ENABLE = yes
+TAP_DANCE_ENABLE = yes
+
+OLED_ENABLE = yes
