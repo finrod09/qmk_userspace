@@ -3,7 +3,8 @@
     "build_targets": [
         ["bastardkb/charybdis/4x6/v2/splinky_3", "burkfers"],
         ["bastardkb/charybdis/3x5/v2/splinky_3", "burkfers"],
-        ["bastardkb/dilemma/3x5_3", "burkfers"],
+        ["bastardkb/dilemma/3x5_3_azoteq", "burkfers"],
         ["bastardkb/dilemma/4x6_4", "burkfers"],
+        ["untitledkeyboard", "peep"],
     ]
 }
