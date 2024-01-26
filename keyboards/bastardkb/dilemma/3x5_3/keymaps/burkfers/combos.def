@@ -7,3 +7,5 @@ COMB(mouse1,                KC_BTN1,                   KC_Y, KC_H)
 COMB(sniping,               SNIPING,                   KC_COMM, RCTL_T(KC_K))
 COMB(dragscroll,            DRGSCRL,                   KC_COMM, KC_DOT)
 // COMB(caretscroll,           PM_MO(PM_CARET),           KC_DOT, LALT_T(KC_L))
+
+
