@@ -26,13 +26,12 @@
 #define TD_MAKE TD(U_TD_MAKE)
 #define TD_SYSR TD(U_TD_SYSRQ)
 
-#define ALGR_W RALT_T(KC_W)
-#define ALGR_O RALT_T(KC_O)
 #define ___GACS_L___(k01, k02, k03, k04) LGUI_T(KC_##k01), LALT_T(KC_##k02), LCTL_T(KC_##k03), LSFT_T(KC_##k04)
+#define ___GAC_L___(k01, k02, k03) LGUI_T(KC_##k01), LALT_T(KC_##k02), LCTL_T(KC_##k03)
 #define ___GACS_R___(k01, k02, k03, k04) RSFT_T(KC_##k01), RCTL_T(KC_##k02), LALT_T(KC_##k03), RGUI_T(KC_##k04)
-#define ALG(k01) RALT_T(KC_##k01)
-
+#define ___GAC_R___(k01, k02, k03) RCTL_T(KC_##k01), LALT_T(KC_##k02), RGUI_T(KC_##k03)
 #define PT_TOGG TG(LAYER_POINTER)
+#define ALG(k01) RALT_T(KC_##k01)
 
 #define LAYOUT_wrapper(...) LAYOUT_split_3x5_3(__VA_ARGS__)
 
@@ -51,22 +50,34 @@ enum km_layers {
     LAYER_MACROPAD = LAYER_KM
 };
 
+#define OS_LGUI OSM(MOD_LGUI)
+#define OS_LALT OSM(MOD_LALT)
+#define OS_LCTL OSM(MOD_LCTL)
+#define OS_LSFT OSM(MOD_LSFT)
+
+#define THUML1 QK_LEAD
+#define THUML2 OSM(MOD_LSFT)
+#define THUML3 LT(LAYER_NAV, KC_SPC)
+#define THUMR1 LT(LAYER_NUM, KC_ENT)
+#define THUMR2 LT(LAYER_SYM, KC_BSPC)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-          KC_Q,  ALGR_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,  ALGR_O,    KC_P,
+          KC_Q,  ALG(W),    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,  ALG(O),    KC_P,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT,
+            ___GAC_L___(A, S, D),      KC_F,    KC_G,       KC_H,    KC_J, ___GAC_R___(K, L, QUOT),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
- LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_POINTER, KC_TAB),LT(LAYER_NAV, KC_SPC),  LT(LAYER_SYM, KC_ENT),LT(LAYER_NUM,KC_BSPC), KC_MUTE
+                          THUML1,  THUML2,  THUML3,     THUMR1,  THUMR2, KC_MUTE
+// LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_POINTER, KC_TAB),LT(LAYER_NAV, KC_SPC),  LT(LAYER_SYM, KC_ENT),LT(LAYER_NUM,KC_BSPC), KC_MUTE
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [LAYER_CANARY] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-          KC_W,  ALG(L),    KC_Y,    KC_P,    KC_B,       KC_Z,    KC_F,    KC_O,  ALG(U), KC_QUOT,
+          KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,       KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
           KC_C,    KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,    KC_E,    KC_I,    KC_A,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
@@ -79,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
        KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,    XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, TD_SYSR,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,    XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+       KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,    XXXXXXX, OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
         KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,    XXXXXXX, XXXXXXX,  TD_CLR, TD_MAKE, TD_BOOT,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
@@ -91,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
        DF_QWER, XXXXXXX, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   MCRPD,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
+       OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,   MCRPD,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        TD_BOOT, TD_MAKE,  TD_CLR, XXXXXXX,    GAME,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
@@ -282,17 +293,31 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //               ╰─────────────────────╯ ╰──────────────╯
   ),
 };
-// clang-format on
-
+// clang-format off
 #endif
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(QK_LEAD)) {
+        tap_code(KC_ESC);
+    } else if (leader_sequence_two_keys(KC_D, KC_D)) {
+        // Leader, d, d => Ctrl+A, Ctrl+C
+        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+        // Leader, d, d, s => Types the below string
+        SEND_STRING("https://start.duckduckgo.com\n");
+    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
+        // Leader, a, s => GUI+S
+        tap_code16(LGUI(KC_S));
+    }
+}
+
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(LAYER_MEDIA, KC_ESC):
-        case LT(LAYER_NAV, KC_SPC):
-        case LT(LAYER_NUM,KC_BSPC):
-        case LT(LAYER_SYM, KC_ENT):
-        case LT(LAYER_POINTER, KC_TAB):
-        case LT(LAYER_FUN, KC_DEL):
+        case THUML1:
+        case THUML2:
+        case THUML3:
+        case THUMR1:
+        case THUMR2:
             return 0;
         default:
             return QUICK_TAP_TERM;
@@ -304,12 +329,11 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
         return 0;
     } else {
         switch(tap_hold_keycode) {
-            case LT(LAYER_MEDIA, KC_ESC):
-            case LT(LAYER_NAV, KC_SPC):
-            case LT(LAYER_NUM,KC_BSPC):
-            case LT(LAYER_SYM, KC_ENT):
-            case LT(LAYER_POINTER, KC_TAB):
-            case LT(LAYER_FUN, KC_DEL):
+            case THUML1:
+            case THUML2:
+            case THUML3:
+            case THUMR1:
+            case THUMR2:
                 return 0;
             default:
                 return 600;
@@ -322,6 +346,12 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
         case game_rf_t:
         case game_fv_g:
             if (!layer_state_is(LAYER_GAME)) {
+                return false;
+            }
+        case lsft:
+        case rsft:
+        case esc:
+            if (!layer_state_is(LAYER_BASE)) {
                 return false;
             }
     }
@@ -343,3 +373,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
+
+
+bool is_custom_rgb_indicator(uint8_t index) {
+    return HAS_FLAGS(g_led_config.flags[index], LED_FLAG_INDICATOR);
+}
