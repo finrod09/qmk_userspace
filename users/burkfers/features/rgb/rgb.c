@@ -19,6 +19,9 @@ const HSV hsv_colors[] = {
 __attribute__((weak)) bool is_custom_rgb_indicator(uint8_t index) {
     return (index == 12 || index == 13 || index == 14 || index == 30 || index == 31 || index == 32);
 }
+__attribute__((weak)) bool rgb_matrix_indicators_advanced_km(uint8_t led_min, uint8_t led_max) {
+    return false;
+}
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         int layer = get_highest_layer(layer_state|default_layer_state);
@@ -42,5 +45,5 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 };
             };
         };
-    return false;
+    return rgb_matrix_indicators_advanced_km(led_min, led_max);
 }
