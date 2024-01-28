@@ -296,21 +296,6 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format off
 #endif
 
-void leader_end_user(void) {
-    if (leader_sequence_one_key(QK_LEAD)) {
-        tap_code(KC_ESC);
-    } else if (leader_sequence_two_keys(KC_D, KC_D)) {
-        // Leader, d, d => Ctrl+A, Ctrl+C
-        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
-        // Leader, d, d, s => Types the below string
-        SEND_STRING("https://start.duckduckgo.com\n");
-    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
-        // Leader, a, s => GUI+S
-        tap_code16(LGUI(KC_S));
-    }
-}
-
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case THUML1:
