@@ -14,8 +14,15 @@ static bool whatisthis_enabled = false;
 static uint16_t whatisthis_lastkc;
 static uint8_t whatisthis_lastmods;
 
+static bool should_clear = false;
+
 bool oled_task_user(void) {
     oled_set_brightness(oled_brightness);
+
+    if (should_clear) {
+        should_clear = false;
+        oled_clear();
+    }
 
     if (!whatisthis_enabled) {
         oled_write_ln_P(PSTR("Untitled Pieboard"), false);
@@ -24,6 +31,10 @@ bool oled_task_user(void) {
         oled_write_raw_P(smallbird_image_L1, sizeof(smallbird_image_L1));
         oled_set_cursor(0,2);
         oled_write_raw_P(smallbird_image_L2, sizeof(smallbird_image_L2));
+        if(IS_LAYER_ON(LAYER_GAME)) {
+            oled_set_cursor(0,3);
+            oled_write_ln_P(PSTR("Let's play a game!"), false);
+        }
     } else {
         oled_set_cursor(0,0);
         oled_write_raw_P(smallbird_image_L1, sizeof(smallbird_image_L1));
@@ -59,6 +70,10 @@ bool oled_task_user(void) {
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return OLED_ROTATION_180;
+}
+
+void should_clear_oled(void) {
+   should_clear = true;
 }
 
 void oled_inc_brightness(bool reverse) {
