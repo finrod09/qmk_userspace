@@ -167,13 +167,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [LAYER_MACROPAD] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,    KC_U,    KC_I,    KC_O,    KC_P,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,      KC_H, ___GACS_R___(   J,   K,   L, QUOT),
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       C(A(KC_1)), C(A(KC_2)), C(A(KC_3)), KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT, DF(LAYER_BASE),
+       C(A(KC_1)), C(A(KC_2)), C(A(KC_3)), C(A(KC_4)), C(A(KC_5)),      KC_N,    KC_M, KC_COMM,  KC_DOT, DF(LAYER_BASE),
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                            KC_P,  M_NUM, KC_SPC,   _______, MO(LAYER_NAV), KC_MUTE
+                            KC_P,  KC_Y, KC_SPC,   _______, MO(LAYER_NAV), KC_MUTE
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
