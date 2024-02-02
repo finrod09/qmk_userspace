@@ -19,3 +19,7 @@
 #include "features/achordion/achordion.h"
 
 #include "features/layer_lock/layer_lock.h"
+
+#ifdef LEADER_ENABLE
+    #include "features/leader/leader.h"
+#endif

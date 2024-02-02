@@ -4,3 +4,7 @@
 #    include "features/rgb/config.h"
 #  endif
 #endif
+
+#ifdef LEADER_ENABLE
+#  include "features/leader/config.h"
+#endif

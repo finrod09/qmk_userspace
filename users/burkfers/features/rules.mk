@@ -10,3 +10,9 @@ ifeq ($(strip $(LEDMAP_ENABLE)), yes)
 	SRC += $(USER_PATH)/features/rgb/rgb.c
 	OPT_DEFS += -DLEDMAP_ENABLE
 endif
+
+
+ifeq ($(strip $(LEADER_ENABLE)), yes)
+	SRC += $(USER_PATH)/features/leader/leader.c
+	OPT_DEFS += -DLEADER_ENABLE
+endif
