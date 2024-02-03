@@ -236,7 +236,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(LAYER_MEDIA, KC_ESC):
         case LT(LAYER_NAV, KC_SPC):
-        case LT(LAYER_NUM,KC_BSPC):
+        case LT(LAYER_NUM, KC_BSPC):
         case LT(LAYER_SYM, KC_ENT):
         case LT(LAYER_POINTER, KC_TAB):
         case LT(LAYER_FUN, KC_DEL):
@@ -247,13 +247,13 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    if(IS_LAYER_ON(LAYER_POINTER)) {
+    if (IS_LAYER_ON(LAYER_POINTER)) {
         return 0;
     } else {
-        switch(tap_hold_keycode) {
+        switch (tap_hold_keycode) {
             case LT(LAYER_MEDIA, KC_ESC):
             case LT(LAYER_NAV, KC_SPC):
-            case LT(LAYER_NUM,KC_BSPC):
+            case LT(LAYER_NUM, KC_BSPC):
             case LT(LAYER_SYM, KC_ENT):
             case LT(LAYER_POINTER, KC_TAB):
             case LT(LAYER_FUN, KC_DEL):

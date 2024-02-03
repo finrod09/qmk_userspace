@@ -1,7 +1,7 @@
 #include "peep.h"
 #include "quantum.h"
 #ifdef OLED_ENABLE
-#   include "oled/oled.h"
+#    include "oled/oled.h"
 #endif
 
 __attribute__((weak)) bool process_record_km(uint16_t keycode, keyrecord_t *record) {

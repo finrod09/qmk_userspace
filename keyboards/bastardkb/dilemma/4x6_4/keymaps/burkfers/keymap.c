@@ -2,10 +2,7 @@
 #include "burkfers.h"
 #include "quantum.h"
 
-enum dilemma_keymap_layers {
-    LAYER_LOWER = LAYER_KM,
-    LAYER_RAISE
-};
+enum dilemma_keymap_layers { LAYER_LOWER = LAYER_KM, LAYER_RAISE };
 
 // Automatically enable sniping-mode on the pointer layer.
 // #define DILEMMA_AUTO_SNIPING_ON_LAYER LAYER_POINTER

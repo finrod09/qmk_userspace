@@ -68,11 +68,9 @@ void u_td_fn_clr(tap_dance_state_t *state, void *user_data) {
 
 // Associate our tap dance key with its functionality
 tap_dance_action_t tap_dance_actions[] = {
-    [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
-    [U_TD_CLR] = ACTION_TAP_DANCE_FN(u_td_fn_clr),
+    [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),          [U_TD_CLR] = ACTION_TAP_DANCE_FN(u_td_fn_clr),
 #ifdef EE_HANDS
-    [U_TD_MAKEL] = ACTION_TAP_DANCE_FN(u_td_fn_make_l),
-    [U_TD_MAKER] = ACTION_TAP_DANCE_FN(u_td_fn_make_r),
+    [U_TD_MAKEL] = ACTION_TAP_DANCE_FN(u_td_fn_make_l),       [U_TD_MAKER] = ACTION_TAP_DANCE_FN(u_td_fn_make_r),
 #else
     [U_TD_MAKE] = ACTION_TAP_DANCE_FN(u_td_fn_make),
 #endif

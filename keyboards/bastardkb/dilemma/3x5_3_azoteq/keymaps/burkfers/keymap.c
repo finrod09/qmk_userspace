@@ -46,9 +46,7 @@
 #define GAME TG(LAYER_GAME)
 #define MCRPD DF(LAYER_MACROPAD)
 
-enum km_layers {
-    LAYER_MACROPAD = LAYER_KM
-};
+enum km_layers { LAYER_MACROPAD = LAYER_KM };
 
 #define OS_LGUI OSM(MOD_LGUI)
 #define OS_LALT OSM(MOD_LALT)
@@ -358,7 +356,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
-
 
 bool is_custom_rgb_indicator(uint8_t index) {
     return HAS_FLAGS(g_led_config.flags[index], LED_FLAG_INDICATOR);

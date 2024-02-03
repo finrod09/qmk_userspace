@@ -9,9 +9,9 @@
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-#  ifdef LEDMAP_ENABLE
-#    include "features/rgb/rgb.h"
-#  endif
+#    ifdef LEDMAP_ENABLE
+#        include "features/rgb/rgb.h"
+#    endif
 #endif
 
 #include "features/caps_word/caps_word.h"
@@ -21,5 +21,5 @@
 #include "features/layer_lock/layer_lock.h"
 
 #ifdef LEADER_ENABLE
-    #include "features/leader/leader.h"
+#    include "features/leader/leader.h"
 #endif

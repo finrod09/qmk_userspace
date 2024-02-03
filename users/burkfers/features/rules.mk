@@ -16,3 +16,8 @@ ifeq ($(strip $(LEADER_ENABLE)), yes)
 	SRC += $(USER_PATH)/features/leader/leader.c
 	OPT_DEFS += -DLEADER_ENABLE
 endif
+
+ifeq ($(strip $(MACCEL_ENABLE)), yes)
+	SRC += $(USER_PATH)/features/maccel/maccel.c
+	OPT_DEFS += -DMACCEL_ENABLE
+endif

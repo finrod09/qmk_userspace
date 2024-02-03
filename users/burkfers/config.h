@@ -9,3 +9,6 @@
 #define TAP_CODE_DELAY 17
 
 #include "features/config.h"
+
+#undef PRINTF_SUPPORT_DECIMAL_SPECIFIERS
+#define PRINTF_SUPPORT_DECIMAL_SPECIFIERS 1

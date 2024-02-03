@@ -5,13 +5,12 @@
 
 // TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-
     switch (keycode) {
         case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
             return 275;
-        // case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+            // case QK_MOD_TAP ... QK_MOD_TAP_MAX:
             // if (QK_MOD_TAP_GET_MODS(keycode) & MOD_LGUI) {
-                // return 300;
+            // return 300;
             // }
         default:
             return TAPPING_TERM;

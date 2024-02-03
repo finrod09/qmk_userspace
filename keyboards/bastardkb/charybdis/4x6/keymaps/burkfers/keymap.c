@@ -276,7 +276,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(LAYER_MEDIA, KC_ESC):
         case LT(LAYER_NAV, KC_SPC):
-        case LT(LAYER_NUM,KC_BSPC):
+        case LT(LAYER_NUM, KC_BSPC):
         case LT(LAYER_SYM, KC_ENT):
         case LT(LAYER_POINTER, KC_TAB):
         case LT(LAYER_FUN, KC_DEL):

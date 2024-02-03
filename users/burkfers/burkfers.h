@@ -10,19 +10,7 @@ enum my_user_keycodes {
     QK_KM
 };
 
-enum user_layers {
-    LAYER_BASE = 0,
-    LAYER_BASE2,
-    LAYER_BASE3,
-    LAYER_GAME,
-    LAYER_NUM,
-    LAYER_NAV,
-    LAYER_FUN,
-    LAYER_MEDIA,
-    LAYER_SYM,
-    LAYER_POINTER,
-    LAYER_KM
-};
+enum user_layers { LAYER_BASE = 0, LAYER_BASE2, LAYER_BASE3, LAYER_GAME, LAYER_NUM, LAYER_NAV, LAYER_FUN, LAYER_MEDIA, LAYER_SYM, LAYER_POINTER, LAYER_KM };
 
 #define DOTCOMM LT(24, KC_DOT)
 

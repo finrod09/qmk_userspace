@@ -34,12 +34,12 @@
 #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
 
-#define RGB_MATRIX_DEFAULT_HUE 200 
+#define RGB_MATRIX_DEFAULT_HUE 200
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 12
 
 #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
 #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
 
-#define ONESHOT_TAP_TOGGLE 5  /* Tapping this number of times holds the key until tapped once again. */
-#define ONESHOT_TIMEOUT 5000  /* Time (in ms) before the one shot key is released */ 
+#define ONESHOT_TAP_TOGGLE 5 /* Tapping this number of times holds the key until tapped once again. */
+#define ONESHOT_TIMEOUT 5000 /* Time (in ms) before the one shot key is released */

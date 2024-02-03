@@ -30,7 +30,9 @@ void process_caps_word_lock(uint16_t keycode, const keyrecord_t *record) {
             case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
             case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:
                 // Earlier return if this has not been considered tapped yet
-                if (record->tap.count == 0) { return; }
+                if (record->tap.count == 0) {
+                    return;
+                }
                 // Get the base tapping keycode of a mod- or layer-tap key
                 keycode = get_tap_kc(keycode);
                 break;

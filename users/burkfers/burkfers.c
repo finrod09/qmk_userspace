@@ -8,15 +8,19 @@
    CUSTOM KEYCODES
   *****************/
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_achordion(keycode, record)) { return false; }
+    if (!process_achordion(keycode, record)) {
+        return false;
+    }
 
-    static bool dotcomm_state = true; // true=dot; false=comma
-    const uint16_t mod_shift = get_mods() & MOD_MASK_SHIFT;
+    static bool    dotcomm_state = true; // true=dot; false=comma
+    const uint16_t mod_shift     = get_mods() & MOD_MASK_SHIFT;
 
-    if (!process_layer_lock(keycode, record, L_LOCK)) { return false; }
+    if (!process_layer_lock(keycode, record, L_LOCK)) {
+        return false;
+    }
     process_caps_word_lock(keycode, record);
 
-    switch(keycode) {
+    switch (keycode) {
         case CAPS_WORD_LOCK:
             // Toggle `caps_word_lock_on`
             if (record->event.pressed) {
@@ -30,9 +34,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case C_LT:
-            if(record->event.pressed) {
+            if (record->event.pressed) {
                 static uint8_t current_default_layer = LAYER_BASE;
-                switch(current_default_layer) {
+                switch (current_default_layer) {
                     case LAYER_BASE:
                         default_layer_set(1UL << LAYER_GAME);
                         current_default_layer = LAYER_GAME;
@@ -44,36 +48,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         break;
                 };
             } else {
-
             }
-            return false; // no further processing
-        case DOTCOMM: // thanks wimads!
-            if (record->event.pressed && record->tap.count == 2) {//swap DOTCOMM state
-                    dotcomm_state = !dotcomm_state; //swap state
-                    tap_code16(KC_BSPC);            //remove character output from first tap
-                } else if (record->event.pressed && dotcomm_state) {//when state is true
-                    if (mod_shift) { //send comm when shifted
-                        unregister_mods(mod_shift);
-                        tap_code16(KC_COMM);
-                        register_mods(mod_shift);
-                    } else { //send dot by default
-                        tap_code16(KC_DOT);
-                    }
-                } else if (record->event.pressed) {//when state is false
-                    if (mod_shift) { //send dot when shifted
-                        unregister_mods(mod_shift);
-                        tap_code16(KC_DOT);
-                        register_mods(mod_shift);
-                    } else { //send comm by default
-                        tap_code16(KC_COMM);
-                    }
+            return false;                                          // no further processing
+        case DOTCOMM:                                              // thanks wimads!
+            if (record->event.pressed && record->tap.count == 2) { // swap DOTCOMM state
+                dotcomm_state = !dotcomm_state;                    // swap state
+                tap_code16(KC_BSPC);                               // remove character output from first tap
+            } else if (record->event.pressed && dotcomm_state) {   // when state is true
+                if (mod_shift) {                                   // send comm when shifted
+                    unregister_mods(mod_shift);
+                    tap_code16(KC_COMM);
+                    register_mods(mod_shift);
+                } else { // send dot by default
+                    tap_code16(KC_DOT);
                 }
-                return false;
+            } else if (record->event.pressed) { // when state is false
+                if (mod_shift) {                // send dot when shifted
+                    unregister_mods(mod_shift);
+                    tap_code16(KC_DOT);
+                    register_mods(mod_shift);
+                } else { // send comm by default
+                    tap_code16(KC_COMM);
+                }
+            }
+            return false;
         default:
             return true; // process elsewhere
     }
 }
-
 
 /******************
     USER CALLBACKS
@@ -86,4 +88,11 @@ bool shutdown_user(bool jump_to_bootloader) {
     rgb_matrix_update_pwm_buffers();
     return false;
 #endif // RGB_MATRIX_ENABLE
+}
+
+void keyboard_post_init_user(void) {
+    debug_enable = true;
+    // debug_matrix=true;
+    // debug_keyboard=true;
+    // debug_mouse=true;
 }
