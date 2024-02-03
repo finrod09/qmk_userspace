@@ -6,8 +6,9 @@ COMB(thumbcombo_media,      KC_MUTE,                   KC_MSTP, KC_MPLY)
 COMB(thumbcombo_fun,        KC_TAB,                    KC_SPC, QK_REP)
 COMB(thumbcombo_lead,       QK_LEAD,                   LT(LAYER_NAV, KC_SPC), LT(LAYER_POINTER, KC_TAB))
 
-COMB(game_rf_t,             KC_T,                      KC_R, KC_F)
-COMB(game_fv_g,             KC_G,                      KC_F, KC_V)
+COMB(game_zx_t,             KC_T,                      KC_Z, KC_X)
+COMB(game_rf_g,             KC_G,                      KC_R, KC_F)
+COMB(game_fv_b,             KC_B,                      KC_F, KC_V)
 
 COMB(capsword,              CAPS_WORD_LOCK,            LSFT_T(KC_F), RSFT_T(KC_J))
 

@@ -266,8 +266,9 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     switch (combo_index) {
-        case game_rf_t:
-        case game_fv_g:
+        case game_zx_t:
+        case game_rf_g:
+        case game_fv_b:
             if (!layer_state_is(LAYER_GAME)) {
                 return false;
             }
