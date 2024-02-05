@@ -24,8 +24,3 @@
 #define MACCEL_ACCUM
 
 report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report);
-
-// wip don't touch
-#define MACCEL_HISTORY_TIME 100 // milliseconds of history to keep
-uint16_t reports_added = 0;
-uint16_t reports_freed = 0;
