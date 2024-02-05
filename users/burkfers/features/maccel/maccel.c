@@ -1,7 +1,6 @@
 #include "maccel.h"
 #include "quantum.h"
 #include "math.h"
-#include "print.h"
 
 static uint32_t maccel_timer;
 
@@ -19,17 +18,16 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 }
 
 report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
-    if(mouse_report.x != 0 || mouse_report.y != 0) {
-
+    if (mouse_report.x != 0 || mouse_report.y != 0) {
         // Credit: @wimads
-        const float speed = maccel_d*(sqrtf(mouse_report.x*mouse_report.x + mouse_report.y*mouse_report.y))/timer_elapsed32(maccel_timer);
-        float scale_factor = 1-(1-maccel_c)*expf(-1*(speed-maccel_b) * maccel_a);
+        const float speed        = maccel_d * (sqrtf(mouse_report.x * mouse_report.x + mouse_report.y * mouse_report.y)) / timer_elapsed32(maccel_timer);
+        float       scale_factor = 1 - (1 - maccel_c) * expf(-1 * (speed - maccel_b) * maccel_a);
         if (speed <= maccel_b) {
             scale_factor = maccel_c;
         }
         const float x = (mouse_report.x * scale_factor);
         const float y = (mouse_report.y * scale_factor);
-        maccel_timer = timer_read32();
+        maccel_timer  = timer_read32();
 
 #ifdef MACCEL_DEBUG
         // printf("maccel: a = %8f, b = %8f, speed = %4f -> scale_factor = %f\r\n", maccel_a, maccel_b, speed, scale_factor);
@@ -46,25 +44,24 @@ report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
         maccel_accum_y += (y - mouse_report.y);
 
         // pay out accumulated fraction once it's whole
-        if(maccel_accum_x >= 1 ) {
+        if (maccel_accum_x >= 1) {
             mouse_report.x += 1;
             maccel_accum_x -= 1;
         } else if (maccel_accum_x <= -1) {
             mouse_report.x -= 1;
             maccel_accum_x += 1;
         }
-        if(maccel_accum_y >= 1 ) {
+        if (maccel_accum_y >= 1) {
             mouse_report.y += 1;
             maccel_accum_y -= 1;
         } else if (maccel_accum_y <= -1) {
             mouse_report.y -= 1;
             maccel_accum_y += 1;
         }
-#ifdef MACCEL_DEBUG
+#    ifdef MACCEL_DEBUG
         printf("maccel accum: x: %3f, y: %3f\n", maccel_accum_x, maccel_accum_y);
-#endif // MACCEL_ACCUM
-        #endif // MACCEL_ACCUM
-
+#    endif // MACCEL_ACCUM
+#endif     // MACCEL_ACCUM
     }
     return mouse_report;
 }
