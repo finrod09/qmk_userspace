@@ -19,10 +19,10 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
     if (mouse_report.x != 0 || mouse_report.y != 0) {
         // Credit: @wimads
-        const float speed        = maccel_d * (sqrtf(mouse_report.x * mouse_report.x + mouse_report.y * mouse_report.y)) / timer_elapsed32(maccel_timer);
-        float       scale_factor = 1 - (1 - maccel_c) * expf(-1 * (speed - maccel_b) * maccel_a);
-        if (speed <= maccel_b) {
-            scale_factor = maccel_c;
+        const float speed = (sqrtf(mouse_report.x*mouse_report.x + mouse_report.y*mouse_report.y))/timer_elapsed32(maccel_timer);
+        float scale_factor = maccel_c-(maccel_c-1)*expf(-1*(speed-maccel_b) * maccel_a);
+        if (scale_factor <= 1) {
+            scale_factor = 1;
         }
         const float x = (mouse_report.x * scale_factor);
         const float y = (mouse_report.y * scale_factor);
