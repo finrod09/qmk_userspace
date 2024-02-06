@@ -13,7 +13,6 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     return pointing_device_task_maccel(mouse_report);
 }
 
-
 // Clamp a value to the maximum report size to prevent over- and underflows
 static inline mouse_xy_report_t clamp_to_report(float val) {
     if (val < XY_REPORT_MIN) {
@@ -28,8 +27,8 @@ static inline mouse_xy_report_t clamp_to_report(float val) {
 report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
     if (mouse_report.x != 0 || mouse_report.y != 0) {
         // Credit: @wimads
-        const float speed = (sqrtf(mouse_report.x*mouse_report.x + mouse_report.y*mouse_report.y))/timer_elapsed32(maccel_timer);
-        float scale_factor = maccel_c-(maccel_c-1)*expf(-1*(speed-maccel_b) * maccel_a);
+        const float speed        = (sqrtf(mouse_report.x * mouse_report.x + mouse_report.y * mouse_report.y)) / timer_elapsed32(maccel_timer);
+        float       scale_factor = maccel_c - (maccel_c - 1) * expf(-1 * (speed - maccel_b) * maccel_a);
         if (scale_factor <= 1) {
             scale_factor = 1;
         }
