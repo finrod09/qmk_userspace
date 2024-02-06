@@ -16,6 +16,17 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     return pointing_device_task_maccel(mouse_report);
 }
 
+// Clamp a value to the maximum report size to prevent over- and underflows
+static inline mouse_xy_report_t clamp_to_report(float val) {
+    if (val < XY_REPORT_MIN) {
+        return XY_REPORT_MIN;
+    } else if (val > XY_REPORT_MAX) {
+        return XY_REPORT_MAX;
+    } else {
+        return val;
+    }
+}
+
 report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
     if (mouse_report.x != 0 || mouse_report.y != 0) {
         // Credit: @wimads
@@ -34,9 +45,6 @@ report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
 #endif
 
 #ifdef MACCEL_ACCUM
-        // report the integer part
-        mouse_report.x = (mouse_xy_report_t)x;
-        mouse_report.y = (mouse_xy_report_t)y;
 
         // accumulate remaining fraction
         maccel_accum_x += (x - mouse_report.x);
@@ -61,6 +69,8 @@ report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
         printf("maccel accum: x: %3f, y: %3f\n", maccel_accum_x, maccel_accum_y);
 #    endif // MACCEL_ACCUM
 #endif     // MACCEL_ACCUM
+        mouse_report.x = clamp_to_report(x);
+        mouse_report.y = clamp_to_report(y);
     }
     return mouse_report;
 }
