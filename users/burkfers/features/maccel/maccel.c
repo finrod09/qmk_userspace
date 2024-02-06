@@ -20,6 +20,16 @@
 
 static uint32_t maccel_timer;
 
+#ifndef MACCEL_STEEPNESS
+#define MACCEL_STEEPNESS 0.6 // steepness of accel curve
+#endif
+#ifndef MACCEL_OFFSET
+#define MACCEL_OFFSET 0.8    // X-offset of accel curve
+#endif
+#ifndef MACCEL_LIMIT
+#define MACCEL_LIMIT 3.5     // maximum scale factor
+#endif
+
 const float maccel_a = MACCEL_STEEPNESS;
 const float maccel_b = MACCEL_OFFSET;
 const float maccel_c = MACCEL_LIMIT;
