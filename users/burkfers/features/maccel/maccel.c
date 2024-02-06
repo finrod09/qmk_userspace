@@ -34,11 +34,6 @@ const float maccel_a = MACCEL_STEEPNESS;
 const float maccel_b = MACCEL_OFFSET;
 const float maccel_c = MACCEL_LIMIT;
 
-// wip: tell a user to insert the shim themselves instead of using _user here
-report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-    return pointing_device_task_maccel(mouse_report);
-}
-
 // Clamp a value to the maximum report size to prevent over- and underflows
 static inline mouse_xy_report_t clamp_to_report(float val) {
     if (val < XY_REPORT_MIN) {
