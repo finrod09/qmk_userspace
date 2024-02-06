@@ -4,10 +4,9 @@
 
 static uint32_t maccel_timer;
 
-static float maccel_a = MACCEL_CURVE_A;
-static float maccel_b = MACCEL_CURVE_B;
-static float maccel_c = MACCEL_CURVE_C;
-static float maccel_d = MACCEL_CURVE_D;
+static float maccel_a = MACCEL_STEEPNESS;
+static float maccel_b = MACCEL_OFFSET;
+static float maccel_c = MACCEL_LIMIT;
 
 static float maccel_accum_x = 0;
 static float maccel_accum_y = 0;

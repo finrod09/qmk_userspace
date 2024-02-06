@@ -5,10 +5,9 @@
 #pragma once
 #include "quantum.h"
 
-#define MACCEL_CURVE_A 7    // steepness of accel curve
-#define MACCEL_CURVE_B 0.05 // X-offset of accel curve
-#define MACCEL_CURVE_C 0.3  // Y-offset of accel curve
-#define MACCEL_CURVE_D .1   // speed scaling factor
+#define MACCEL_STEEPNESS 0.6    // steepness of accel curve
+#define MACCEL_OFFSET 0.8 // X-offset of accel curve
+#define MACCEL_LIMIT 3.5  // maximum scale factor
 
 /*
  * Requires enabling float support for printf!
