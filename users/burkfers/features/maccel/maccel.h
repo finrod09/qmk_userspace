@@ -17,9 +17,4 @@
  */
 #define MACCEL_DEBUG
 
-/*
- * Accumulate fractions of mouse movement resulting from scaling, prevents cursor stall at low speeds
- */
-#define MACCEL_ACCUM
-
 report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report);
