@@ -4,9 +4,9 @@
 
 static uint32_t maccel_timer;
 
-static float maccel_a = MACCEL_STEEPNESS;
-static float maccel_b = MACCEL_OFFSET;
-static float maccel_c = MACCEL_LIMIT;
+const float maccel_a = MACCEL_STEEPNESS;
+const float maccel_b = MACCEL_OFFSET;
+const float maccel_c = MACCEL_LIMIT;
 
 // wip: tell a user to insert the shim themselves instead of using _user here
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
