@@ -276,3 +276,10 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 
     return true;
 }
+
+#ifdef MACCEL_ENABLE
+#include "features/maccel/maccel.h"
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    return pointing_device_task_maccel(mouse_report);
+}
+#endif
