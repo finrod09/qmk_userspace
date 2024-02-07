@@ -21,14 +21,16 @@
 static uint32_t maccel_timer;
 
 #ifndef MACCEL_STEEPNESS
-#define MACCEL_STEEPNESS 0.6 // steepness of accel curve
+#define MACCEL_STEEPNESS 0.4 // steepness of accel curve
 #endif
 #ifndef MACCEL_OFFSET
-#define MACCEL_OFFSET 0.8    // X-offset of accel curve
+#define MACCEL_OFFSET 1.1    // X-offset of accel curve
 #endif
 #ifndef MACCEL_LIMIT
-#define MACCEL_LIMIT 3.5     // maximum scale factor
+#define MACCEL_LIMIT 4.5    // maximum scale factor
 #endif
+
+#define DPI_CORRECTION(dpi) ((900.0f)/dpi)
 
 const float maccel_a = MACCEL_STEEPNESS;
 const float maccel_b = MACCEL_OFFSET;
@@ -48,17 +50,18 @@ static inline mouse_xy_report_t clamp_to_report(float val) {
 report_mouse_t pointing_device_task_maccel(report_mouse_t mouse_report) {
     if (mouse_report.x != 0 || mouse_report.y != 0) {
         // Credit: @wimads
-        const float speed        = (sqrtf(mouse_report.x * mouse_report.x + mouse_report.y * mouse_report.y)) / timer_elapsed32(maccel_timer);
-        float       scale_factor = maccel_c - (maccel_c - 1) * expf(-1 * (speed - maccel_b) * maccel_a);
-        if (scale_factor <= 1) {
-            scale_factor = 1;
+        const uint16_t device_dpi = pointing_device_get_cpi();
+        const float velocity        = DPI_CORRECTION(device_dpi)*(sqrtf(mouse_report.x * mouse_report.x + mouse_report.y * mouse_report.y)) / timer_elapsed32(maccel_timer);
+        float       maccel_factor = maccel_c - (maccel_c - 1) * expf(-1 * (velocity - maccel_b) * maccel_a);
+        if (maccel_factor <= 1) {
+            maccel_factor = 1;
         }
-        const float x = (mouse_report.x * scale_factor);
-        const float y = (mouse_report.y * scale_factor);
+        const float x = (mouse_report.x * maccel_factor);
+        const float y = (mouse_report.y * maccel_factor);
         maccel_timer  = timer_read32();
 
 #ifdef MACCEL_DEBUG
-        printf("maccel: x: %i, y: %i, speed %f -> factor %f; x': %3f, y': %3f\n", mouse_report.x, mouse_report.y, speed, scale_factor, x, y);
+        printf("DPI = %4i, factor = %4f, velocity = %4f\n", device_dpi, maccel_factor, velocity);
 #endif
 
         mouse_report.x = clamp_to_report(x);

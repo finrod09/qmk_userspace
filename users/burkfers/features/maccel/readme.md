@@ -71,6 +71,7 @@ With an unfavorable combination of `POINTING_DEVICE_THROTTLE_MS` and higher DPI,
 
 ## Release history
 
+2024 February 07 - Experimental new DPI correction to achieve a consistent curve across varying DPIs.
 2024 February 06 - First release candidate. Feedback welcome!
 
 ## Credits
