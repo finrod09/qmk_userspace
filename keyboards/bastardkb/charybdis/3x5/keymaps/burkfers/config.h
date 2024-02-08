@@ -36,7 +36,7 @@
 #undef POINTING_DEVICE_TASK_THROTTLE_MS
 #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 
-#define MACCEL_STEEPNESS 0.8 // steepness of accel curve
-#define MACCEL_OFFSET 1.1    // X-offset of accel curve
-#define MACCEL_LIMIT 4.5     // maximum scale factor
+#define MACCEL_STEEPNESS 1.0 // steepness of accel curve
+#define MACCEL_OFFSET 0.8    // X-offset of accel curve
+#define MACCEL_LIMIT 3.5     // maximum scale factor
 #define MACCEL_DEBUG

@@ -5,6 +5,5 @@ LEDMAP_ENABLE = yes
 
 LEADER_ENABLE = yes
 
-# wip
 MACCEL_ENABLE = yes
 
