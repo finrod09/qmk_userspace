@@ -17,8 +17,8 @@
 #pragma once
 
 /* Charybdis-specific features. */
-#define DILEMMA_MINIMUM_DEFAULT_DPI 800
-#define DILEMMA_DEFAULT_DPI_CONFIG_STEP 200
+#define DILEMMA_MINIMUM_DEFAULT_DPI 400
+#define DILEMMA_DEFAULT_DPI_CONFIG_STEP 100
 #define DILEMMA_MINIMUM_SNIPING_DPI 100
 #define DILEMMA_SNIPING_DPI_CONFIG_STEP 100
 
@@ -41,5 +41,16 @@
 #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
 #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
 
-#define ONESHOT_TAP_TOGGLE 5 /* Tapping this number of times holds the key until tapped once again. */
-#define ONESHOT_TIMEOUT 5000 /* Time (in ms) before the one shot key is released */
+#define ONESHOT_TAP_TOGGLE                                                     \
+  5 /* Tapping this number of times holds the key until tapped once again. */
+#define ONESHOT_TIMEOUT                                                        \
+  5000 /* Time (in ms) before the one shot key is released */
+
+#define MOUSE_EXENDED_REPORT
+#undef POINTING_DEVICE_TASK_THROTTLE_MS
+#define POINTING_DEVICE_TASK_THROTTLE_MS 10
+
+#define MACCEL_STEEPNESS 1.0 // steepness of accel curve
+#define MACCEL_OFFSET 0.8    // X-offset of accel curve
+#define MACCEL_LIMIT 3.5     // maximum scale factor
+#define MACCEL_DEBUG

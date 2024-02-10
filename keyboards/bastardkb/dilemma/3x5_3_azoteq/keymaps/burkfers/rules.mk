@@ -8,3 +8,5 @@ VIA_ENABLE = yes
 LEADER_ENABLE = yes
 
 ONE_SHOT_ENABLE = yes
+
+MACCEL_ENABLE = yes
