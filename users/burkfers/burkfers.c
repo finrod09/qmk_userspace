@@ -1,14 +1,21 @@
 #include "action_layer.h"
 #include QMK_KEYBOARD_H
-#include "quantum.h"
-#include "keycodes.h"
 #include "burkfers.h"
+#include "keycodes.h"
+#include "quantum.h"
 
 /******************
    CUSTOM KEYCODES
   *****************/
+__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_achordion(keycode, record)) {
+        return false;
+    }
+    if (!process_record_keymap(keycode, record)) {
         return false;
     }
 

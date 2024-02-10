@@ -41,10 +41,8 @@
 #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
 #define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
 
-#define ONESHOT_TAP_TOGGLE                                                     \
-  5 /* Tapping this number of times holds the key until tapped once again. */
-#define ONESHOT_TIMEOUT                                                        \
-  5000 /* Time (in ms) before the one shot key is released */
+#define ONESHOT_TAP_TOGGLE 5 /* Tapping this number of times holds the key until tapped once again. */
+#define ONESHOT_TIMEOUT 5000 /* Time (in ms) before the one shot key is released */
 
 #define MOUSE_EXENDED_REPORT
 #undef POINTING_DEVICE_TASK_THROTTLE_MS

@@ -26,14 +26,10 @@
 #define TD_MAKE TD(U_TD_MAKE)
 #define TD_SYSR TD(U_TD_SYSRQ)
 
-#define ___GACS_L___(k01, k02, k03, k04)                                       \
-  LGUI_T(KC_##k01), LALT_T(KC_##k02), LCTL_T(KC_##k03), LSFT_T(KC_##k04)
-#define ___GAC_L___(k01, k02, k03)                                             \
-  LGUI_T(KC_##k01), LALT_T(KC_##k02), LCTL_T(KC_##k03)
-#define ___GACS_R___(k01, k02, k03, k04)                                       \
-  RSFT_T(KC_##k01), RCTL_T(KC_##k02), LALT_T(KC_##k03), RGUI_T(KC_##k04)
-#define ___GAC_R___(k01, k02, k03)                                             \
-  RCTL_T(KC_##k01), LALT_T(KC_##k02), RGUI_T(KC_##k03)
+#define ___GACS_L___(k01, k02, k03, k04) LGUI_T(KC_##k01), LALT_T(KC_##k02), LCTL_T(KC_##k03), LSFT_T(KC_##k04)
+#define ___GAC_L___(k01, k02, k03) LGUI_T(KC_##k01), LALT_T(KC_##k02), LCTL_T(KC_##k03)
+#define ___GACS_R___(k01, k02, k03, k04) RSFT_T(KC_##k01), RCTL_T(KC_##k02), LALT_T(KC_##k03), RGUI_T(KC_##k04)
+#define ___GAC_R___(k01, k02, k03) RCTL_T(KC_##k01), LALT_T(KC_##k02), RGUI_T(KC_##k03)
 #define PT_TOGG TG(LAYER_POINTER)
 #define ALG(k01) RALT_T(KC_##k01)
 
@@ -362,12 +358,12 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif // ENCODER_MAP_ENABLE
 
 bool is_custom_rgb_indicator(uint8_t index) {
-  return HAS_FLAGS(g_led_config.flags[index], LED_FLAG_INDICATOR);
+    return HAS_FLAGS(g_led_config.flags[index], LED_FLAG_INDICATOR);
 }
 
 #ifdef MACCEL_ENABLE
-#include "features/maccel/maccel.h"
+#    include "features/maccel/maccel.h"
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-  return pointing_device_task_maccel(mouse_report);
+    return pointing_device_task_maccel(mouse_report);
 }
 #endif
