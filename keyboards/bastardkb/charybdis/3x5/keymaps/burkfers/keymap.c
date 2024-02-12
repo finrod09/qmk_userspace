@@ -16,10 +16,13 @@
  */
 #include "keycodes.h"
 #include "modifiers.h"
-#include "quantum.h"
 #include QMK_KEYBOARD_H
 #include "burkfers.h"
 #include "g/keymap_combo.h"
+
+#ifdef MACCEL_ENABLE
+#    include "features/maccel/maccel.h"
+#endif
 
 #define TD_BOOT TD(U_TD_BOOT)
 #define TD_CLR TD(U_TD_CLR)
@@ -114,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [LAYER_POINTER] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
-       _______, _______, _______, _______, _______,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
+       MA_STEEPNESS, MA_OFFSET, MA_LIMIT, _______, _______,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        _______, _______, _______, _______, _______,   KC_BTN4, KC_BTN5, PM_MO(PM_CARET), PM_MO(PM_VOL), PM_MO(PM_HISTORY),
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
@@ -278,8 +281,16 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 }
 
 #ifdef MACCEL_ENABLE
-#    include "features/maccel/maccel.h"
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     return pointing_device_task_maccel(mouse_report);
 }
 #endif
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+#ifdef MACCEL_ENABLE
+    if (!process_record_maccel(keycode, record, MA_STEEPNESS, MA_OFFSET, MA_LIMIT)) {
+        return false;
+    }
+#endif
+    return true;
+}

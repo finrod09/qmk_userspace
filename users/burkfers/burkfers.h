@@ -7,6 +7,9 @@ enum my_user_keycodes {
     C_LT = QK_USER, // CUSTOM_LAYERTOGGLE
     CAPS_WORD_LOCK,
     L_LOCK,
+    MA_STEEPNESS,
+    MA_OFFSET,
+    MA_LIMIT,
     QK_KM
 };
 

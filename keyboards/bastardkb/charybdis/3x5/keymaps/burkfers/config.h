@@ -17,7 +17,7 @@
 #pragma once
 
 /* Charybdis-specific features. */
-#define CHARYBDIS_MINIMUM_DEFAULT_DPI 400
+#define CHARYBDIS_MINIMUM_DEFAULT_DPI 200
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 100
 #define CHARYBDIS_MINIMUM_SNIPING_DPI 50
 #define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 10
@@ -32,11 +32,17 @@
 #define SPLIT_HAND_PIN_LOW_IS_LEFT
 #define USB_VBUS_PIN GP19
 
-#define MOUSE_EXENDED_REPORT
+// #define MOUSE_EXENDED_REPORT
 #undef POINTING_DEVICE_TASK_THROTTLE_MS
 #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 
+// wimads vals
+//  #define MACCEL_STEEPNESS 1.0 // steepness of accel curve
+//  #define MACCEL_OFFSET 0.8    // X-offset of accel curve
+//  #define MACCEL_LIMIT 3.5     // maximum scale factor
+// burkfers vals
 #define MACCEL_STEEPNESS 1.0 // steepness of accel curve
-#define MACCEL_OFFSET 0.8    // X-offset of accel curve
-#define MACCEL_LIMIT 3.5     // maximum scale factor
+#define MACCEL_OFFSET 1.0    // X-offset of accel curve
+#define MACCEL_LIMIT 6.0     // maximum scale factor
 #define MACCEL_DEBUG
+#define MACCEL_USE_KEYCODES
