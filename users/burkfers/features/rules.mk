@@ -21,3 +21,8 @@ ifeq ($(strip $(MACCEL_ENABLE)), yes)
 	SRC += $(USER_PATH)/features/maccel/maccel.c
 	OPT_DEFS += -DMACCEL_ENABLE
 endif
+
+ifeq ($(strip $(QP_ST7735_ENABLE)), yes)
+	-include $(USER_PATH)/features/painter/rules.mk
+	OPT_DEFS += -DQP_ST7735_ENABLE
+endif

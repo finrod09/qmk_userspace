@@ -23,3 +23,7 @@
 #ifdef LEADER_ENABLE
 #    include "features/leader/leader.h"
 #endif
+
+#ifdef QP_ST7735_ENABLE
+#    include "features/painter/qp_st7735.h"
+#endif

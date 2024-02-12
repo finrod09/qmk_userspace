@@ -102,4 +102,8 @@ void keyboard_post_init_user(void) {
     // debug_matrix=true;
     // debug_keyboard=true;
     // debug_mouse=true;
+
+#ifdef QP_ST7735_ENABLE
+    keyboard_post_init_painter();
+#endif
 }
