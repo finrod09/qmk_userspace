@@ -7,12 +7,10 @@ enum my_user_keycodes {
     C_LT = QK_USER, // CUSTOM_LAYERTOGGLE
     CAPS_WORD_LOCK,
     L_LOCK,
-#ifdef MACCEL_ENABLE
     MA_STEEPNESS,
     MA_OFFSET,
     MA_LIMIT,
     MA_TOGG,
-#endif
     QK_KM
 };
 
