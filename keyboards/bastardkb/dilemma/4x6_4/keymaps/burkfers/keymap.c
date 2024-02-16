@@ -27,6 +27,10 @@ enum dilemma_keymap_layers { LAYER_LOWER = LAYER_KM, LAYER_RAISE };
 #define LOW_TAB LT(LAYER_LOWER, KC_TAB)
 #define RAI_BSP LT(LAYER_RAISE, KC_BSPC)
 
+#define TD_BOOT TD(U_TD_BOOT)
+#define TD_CLR TD(U_TD_CLR)
+#define TD_MAKE TD(U_TD_MAKE)
+
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 // clang-format off
@@ -67,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_MPLY, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_MUTE,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_MPRV, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD,
+       KC_MPRV, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, XXXXXXX,    XXXXXXX, XXXXXXX,  TD_CLR, TD_MAKE, TD_BOOT, KC_VOLD,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                          XXXXXXX, _______, _______, XXXXXXX,    _______, XXXXXXX, XXXXXXX, XXXXXXX
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────╯
@@ -172,3 +176,25 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     }
     return false;
 };
+
+#ifdef MACCEL_ENABLE
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    return pointing_device_task_maccel(mouse_report);
+}
+#endif
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+#ifdef MACCEL_ENABLE
+    if (!process_record_maccel(keycode, record, MA_STEEPNESS, MA_OFFSET, MA_LIMIT)) {
+        return false;
+    }
+    switch (keycode) {
+        case MA_TOGG:
+            if (record->event.pressed) {
+                maccel_toggle_enabled();
+                return false;
+            }
+    }
+#endif
+    return true;
+}

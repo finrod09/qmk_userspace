@@ -4,8 +4,6 @@
 
 #define ENABLE_COMPILE_KEYCODE
 
-#define SPLIT_LED_STATE_ENABLE
-
 #define TAP_CODE_DELAY 17
 
 #include "features/config.h"

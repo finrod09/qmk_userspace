@@ -52,3 +52,7 @@
 #define MACCEL_OFFSET 0.8    // X-offset of accel curve
 #define MACCEL_LIMIT 3.5     // maximum scale factor
 #define MACCEL_DEBUG
+
+#define EECONFIG_USER_DATA_SIZE 16
+
+#define DEVICE_CPI_PARAM 0.9
