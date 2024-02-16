@@ -98,6 +98,9 @@ bool shutdown_user(bool jump_to_bootloader) {
 }
 
 void keyboard_post_init_user(void) {
+#ifdef MACCEL_ENABLE
+    keyboard_post_init_maccel();
+#endif
     debug_enable = true;
     // debug_matrix=true;
     // debug_keyboard=true;

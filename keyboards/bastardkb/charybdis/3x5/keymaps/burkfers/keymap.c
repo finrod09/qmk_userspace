@@ -20,10 +20,6 @@
 #include "burkfers.h"
 #include "g/keymap_combo.h"
 
-#ifdef MACCEL_ENABLE
-#    include "features/maccel/maccel.h"
-#endif
-
 #define TD_BOOT TD(U_TD_BOOT)
 #define TD_CLR TD(U_TD_CLR)
 #define TD_MAKE TD(U_TD_MAKE)
@@ -117,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [LAYER_POINTER] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
-       MA_STEEPNESS, MA_OFFSET, MA_LIMIT, _______, _______,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
+       MA_STEEPNESS, MA_OFFSET, MA_LIMIT, MA_TOGG, _______,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        _______, _______, _______, _______, _______,   KC_BTN4, KC_BTN5, PM_MO(PM_CARET), PM_MO(PM_VOL), PM_MO(PM_HISTORY),
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
@@ -290,6 +286,13 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 #ifdef MACCEL_ENABLE
     if (!process_record_maccel(keycode, record, MA_STEEPNESS, MA_OFFSET, MA_LIMIT)) {
         return false;
+    }
+    switch (keycode) {
+        case MA_TOGG:
+            if (record->event.pressed) {
+                maccel_toggle_enabled();
+                return false;
+            }
     }
 #endif
     return true;

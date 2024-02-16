@@ -27,3 +27,7 @@
 #ifdef QP_ST7735_ENABLE
 #    include "features/painter/qp_st7735.h"
 #endif
+
+#ifdef MACCEL_ENABLE
+#    include "features/maccel/maccel.h"
+#endif

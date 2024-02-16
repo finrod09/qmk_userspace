@@ -7,3 +7,4 @@ LEADER_ENABLE = yes
 
 MACCEL_ENABLE = yes
 
+VIA_ENABLE = yes

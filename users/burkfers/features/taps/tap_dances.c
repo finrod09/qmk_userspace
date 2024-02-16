@@ -33,7 +33,7 @@ void u_td_fn_make(tap_dance_state_t *state, void *user_data) {
         // adapted from quantum.c, since we can't tap quantum codes
 
         SEND_STRING_DELAY("qmk flash ", 1);
-        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -j 0" SS_TAP(X_ENTER), 1);
+        SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP "" SS_TAP(X_ENTER), 1);
     }
 }
 #endif

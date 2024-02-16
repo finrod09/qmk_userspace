@@ -46,3 +46,9 @@
 #define MACCEL_LIMIT 6.0     // maximum scale factor
 #define MACCEL_DEBUG
 #define MACCEL_USE_KEYCODES
+
+#ifdef VIA_ENABLE
+#    define DYNAMIC_KEYMAP_LAYER_COUNT 10
+#endif
+
+#define EECONFIG_USER_DATA_SIZE 16
