@@ -7,12 +7,22 @@ enum my_user_keycodes {
     C_LT = QK_USER, // CUSTOM_LAYERTOGGLE
     CAPS_WORD_LOCK,
     L_LOCK,
-    MA_STEEPNESS,
+#ifdef MACCEL_ENABLE
+    MA_TAKEOFF,
+    MA_GROWTH_RATE,
     MA_OFFSET,
     MA_LIMIT,
     MA_TOGG,
+#endif
     QK_KM
 };
+
+#ifdef MACCEL_ENABLE
+#    define MA_TKO MA_TAKEOFF
+#    define MA_GRO MA_GROWTH_RATE
+#    define MA_OFS MA_OFFSET
+#    define MA_LMT MA_LIMIT
+#endif
 
 enum user_layers { LAYER_BASE = 0, LAYER_BASE2, LAYER_BASE3, LAYER_GAME, LAYER_NUM, LAYER_NAV, LAYER_FUN, LAYER_MEDIA, LAYER_SYM, LAYER_POINTER, LAYER_KM };
 

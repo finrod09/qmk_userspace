@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [LAYER_POINTER] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
-       MA_STEEPNESS, MA_OFFSET, MA_LIMIT, MA_TOGG, _______,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
+        MA_TKO,  MA_GRO,  MA_OFS,  MA_LMT, MA_TOGG,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        _______, _______, _______, _______, _______,   KC_BTN4, KC_BTN5, PM_MO(PM_CARET), PM_MO(PM_VOL), PM_MO(PM_HISTORY),
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
@@ -284,7 +284,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 #ifdef MACCEL_ENABLE
-    if (!process_record_maccel(keycode, record, MA_STEEPNESS, MA_OFFSET, MA_LIMIT)) {
+    if (!process_record_maccel(keycode, record, MA_TAKEOFF, MA_GROWTH_RATE, MA_OFFSET, MA_LIMIT)) {
         return false;
     }
     switch (keycode) {
