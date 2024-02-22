@@ -34,6 +34,8 @@ void u_td_fn_make(tap_dance_state_t *state, void *user_data) {
 
         SEND_STRING_DELAY("qmk flash ", 1);
         SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP "" SS_TAP(X_ENTER), 1);
+    } else if (state->count == 3) {
+        SEND_STRING_DELAY("qmk compile --compiledb -kb " QMK_KEYBOARD " -km " QMK_KEYMAP "" SS_TAP(X_ENTER), 1);
     }
 }
 #endif
