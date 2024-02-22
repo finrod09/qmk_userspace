@@ -1,7 +1,7 @@
 #pragma once
 
-#include "quantum.h"
-#include "features/features.h"
+#include "keycodes.h"
+#include "features/features.h" // IWYU pragma: keep
 
 enum my_user_keycodes {
     C_LT = QK_USER, // CUSTOM_LAYERTOGGLE

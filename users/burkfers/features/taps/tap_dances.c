@@ -1,8 +1,8 @@
 // Copyright 2021 Christopher Courtney, aka Drashna Jael're  (@drashna) <drashna@live.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "burkfers.h"
 #include "tap_dances.h"
+#include "quantum.h"
 
 void u_td_fn_boot(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {

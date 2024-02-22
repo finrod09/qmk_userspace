@@ -1,4 +1,8 @@
-#include "burkfers.h"
+
+#include "rgb.h"
+#include "action_layer.h"
+#include "host.h"
+#include "rgb_matrix.h"
 
 __attribute__((weak)) bool is_custom_rgb_indicator(uint8_t index) {
     return (index == 12 || index == 13 || index == 14 || index == 30 || index == 31 || index == 32);

@@ -1,6 +1,7 @@
 #pragma once
 
-#include "quantum.h"
+#include "color.h"
+#include "progmem.h"
 
 enum colors {
     hOFF = 0,

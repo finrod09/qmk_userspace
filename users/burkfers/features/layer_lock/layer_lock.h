@@ -62,7 +62,7 @@
 
 #pragma once
 
-#include "quantum.h"
+#include "quantum.h" // IWYU pragma: keep
 
 #ifdef __cplusplus
 extern "C" {

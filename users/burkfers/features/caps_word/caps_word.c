@@ -1,5 +1,5 @@
 #include "burkfers.h"
-#include "quantum.h"
+#include "quantum.h" // IWYU pragma: keep
 
 void caps_word_lock_enable(void) {
     caps_word_lock_on = true;

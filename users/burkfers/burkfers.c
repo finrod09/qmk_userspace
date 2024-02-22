@@ -1,5 +1,5 @@
 #include "action_layer.h"
-#include QMK_KEYBOARD_H
+#include QMK_KEYBOARD_H // IWYU pragma: keep
 #include "burkfers.h"
 #include "keycodes.h"
 #include "quantum.h"

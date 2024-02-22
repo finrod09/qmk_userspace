@@ -22,10 +22,10 @@ ifeq ($(strip $(LEADER_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(MACCEL_ENABLE)), yes)
-	include $(USER_PATH)/features/maccel/rules.mk
+	-include $(USER_PATH)/features/maccel/rules.mk
 endif
 
 ifeq ($(strip $(QP_ST7735_ENABLE)), yes)
-	-include $(USER_PATH)/features/painter/rules.mk
+	include $(USER_PATH)/features/painter/rules.mk
 	OPT_DEFS += -DQP_ST7735_ENABLE
 endif

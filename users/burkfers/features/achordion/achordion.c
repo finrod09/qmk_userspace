@@ -21,6 +21,7 @@
  */
 
 #include "achordion.h"
+#include QMK_KEYBOARD_H // IWYU pragma: keep // Make clangd happy, provides MATRIX_ROWS directly
 
 #if !defined(IS_QK_MOD_TAP)
 // Attempt to detect out-of-date QMK installation, which would fail with
