@@ -3,3 +3,4 @@
 *.uf2
 .cache/clangd/index
 compile_commands.json
+users/burkfers/features/maccel/
