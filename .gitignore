@@ -1,3 +1,5 @@
 *.hex
 *.bin
 *.uf2
+.cache/clangd/index
+compile_commands.json

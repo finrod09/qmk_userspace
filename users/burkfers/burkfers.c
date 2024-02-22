@@ -12,9 +12,16 @@ __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef TAIPO_ENABLE
+    if (IS_LAYER_ON(LAYER_TAIPO)) {
+        return taipo_process_record_user(keycode, record);
+    }
+#endif
+#ifdef ACHORDION_ENABLE
     if (!process_achordion(keycode, record)) {
         return false;
     }
+#endif
     if (!process_record_keymap(keycode, record)) {
         return false;
     }
@@ -108,5 +115,14 @@ void keyboard_post_init_user(void) {
 
 #ifdef QP_ST7735_ENABLE
     keyboard_post_init_painter();
+#endif
+}
+
+void matrix_scan_user(void) {
+#ifdef ACHORDION_ENABLE
+    achordion_task();
+#endif
+#ifdef TAIPO_ENABLE
+    taipo_matrix_scan_user();
 #endif
 }

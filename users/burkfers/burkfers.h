@@ -13,7 +13,7 @@ enum my_user_keycodes {
     MA_OFFSET,
     MA_LIMIT,
     MA_TOGG,
-#endif
+#endif // MACCEL_ENABLE
     QK_KM
 };
 
@@ -24,28 +24,23 @@ enum my_user_keycodes {
 #    define MA_LMT MA_LIMIT
 #endif
 
-enum user_layers { LAYER_BASE = 0, LAYER_BASE2, LAYER_BASE3, LAYER_GAME, LAYER_NUM, LAYER_NAV, LAYER_FUN, LAYER_MEDIA, LAYER_SYM, LAYER_POINTER, LAYER_KM };
+enum user_layers {
+    //clang-format off
+    LAYER_BASE = 0,
+    LAYER_BASE2,
+    LAYER_BASE3,
+    LAYER_GAME,
+    LAYER_NUM,
+    LAYER_NAV,
+    LAYER_FUN,
+    LAYER_MEDIA,
+    LAYER_SYM,
+    LAYER_POINTER,
+    LAYER_KM
+    //clang-format on
+};
 
 #define DOTCOMM LT(24, KC_DOT)
-
-#ifdef RGB_MATRIX_ENABLE
-enum colors {
-    hOFF = 0,
-    hPRPL,
-    hDPRP,
-    hPINK,
-    hDPNK,
-    hCYAN,
-    hLRED,
-    hBLUE,
-    hORNG,
-    hRED,
-    hMGTA,
-    hYELO,
-    hGREN,
-};
-extern const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS];
-#endif
 
 #define HOME_A LGUI_T(KC_A)
 #define HOME_S LALT_T(KC_S)

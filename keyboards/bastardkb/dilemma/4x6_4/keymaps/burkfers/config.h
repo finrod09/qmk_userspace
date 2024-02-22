@@ -15,7 +15,7 @@
 #define MACCEL_DEBUG
 #define MACCEL_USE_KEYCODES
 
-#define EECONFIG_USER_DATA_SIZE 16
+#define EECONFIG_USER_DATA_SIZE 20
 
 /* Dilemma-specific features. */
 #define DILEMMA_MINIMUM_DEFAULT_DPI 200

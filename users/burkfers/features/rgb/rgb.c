@@ -1,9 +1,5 @@
 #include "burkfers.h"
 
-const HSV hsv_colors[] = {
-    [hOFF] = {0, 0, 0}, [hPRPL] = {205, 255, 255}, [hDPRP] = {205, 255, 150}, [hPINK] = {251, 223, 255}, [hDPNK] = {251, 223, 155}, [hCYAN] = {128, 255, 255}, [hLRED] = {255, 239, 255}, [hBLUE] = {170, 215, 221}, [hORNG] = {20, 208, 255}, [hRED] = {0, 255, 255}, [hMGTA] = {220, 255, 255}, [hYELO] = {15, 255, 255}, [hGREN] = {50, 255, 255},
-};
-
 __attribute__((weak)) bool is_custom_rgb_indicator(uint8_t index) {
     return (index == 12 || index == 13 || index == 14 || index == 30 || index == 31 || index == 32);
 }

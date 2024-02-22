@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
+
 #include "burkfers.h"
 
 // Define a type for as many tap dance states as you need

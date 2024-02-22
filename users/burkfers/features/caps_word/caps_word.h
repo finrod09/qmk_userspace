@@ -1,4 +1,5 @@
 #pragma once
+
 #include "burkfers.h"
 
 bool caps_word_lock_on;

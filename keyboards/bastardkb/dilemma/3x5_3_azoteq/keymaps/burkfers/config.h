@@ -28,8 +28,6 @@
 #define SPLIT_MODS_ENABLE
 #define SPLIT_ACTIVITY_ENABLE
 
-#define CIRQUE_PINNACLE_SKIP_SENSOR_CHECK // workaround for upstream issue
-
 #undef RGB_MATRIX_DEFAULT_MODE
 #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
@@ -39,20 +37,22 @@
 #define DYNAMIC_KEYMAP_LAYER_COUNT 12
 
 #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
-#define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
 
 #define ONESHOT_TAP_TOGGLE 5 /* Tapping this number of times holds the key until tapped once again. */
-#define ONESHOT_TIMEOUT 5000 /* Time (in ms) before the one shot key is released */
+
+#ifdef MACCEL_ENABLE
+#    define MACCEL_STEEPNESS 1.0 // steepness of accel curve
+#    define MACCEL_OFFSET 0.8    // X-offset of accel curve
+#    define MACCEL_LIMIT 3.5     // maximum scale factor
+#    define MACCEL_DEBUG
+
+#    define EECONFIG_USER_DATA_SIZE 20
+#endif
 
 #define MOUSE_EXENDED_REPORT
 #undef POINTING_DEVICE_TASK_THROTTLE_MS
 #define POINTING_DEVICE_TASK_THROTTLE_MS 10
 
-#define MACCEL_STEEPNESS 1.0 // steepness of accel curve
-#define MACCEL_OFFSET 0.8    // X-offset of accel curve
-#define MACCEL_LIMIT 3.5     // maximum scale factor
-#define MACCEL_DEBUG
+#define POINTING_DEVICE_DEBUG
 
-#define EECONFIG_USER_DATA_SIZE 16
-
-#define DEVICE_CPI_PARAM 0.9
+#define SELECT_SOFT_SERIAL_SPEED 4

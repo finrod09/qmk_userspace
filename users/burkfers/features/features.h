@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
+
 #include QMK_KEYBOARD_H
 
 #ifdef TAP_DANCE_ENABLE
@@ -16,7 +17,9 @@
 
 #include "features/caps_word/caps_word.h"
 
-#include "features/achordion/achordion.h"
+#ifdef ACHORDION_ENABLE
+#    include "features/achordion/achordion.h"
+#endif
 
 #include "features/layer_lock/layer_lock.h"
 

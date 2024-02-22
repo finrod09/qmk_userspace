@@ -270,6 +270,24 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 // clang-format on
+const HSV hsv_colors[] = {
+    // clang-format off
+    [ hOFF] = {  0,   0,   0},
+    [hPRPL] = {205, 255, 255},
+    [hDPRP] = {205, 255, 150},
+    [hPINK] = {251, 223, 255},
+    [hDPNK] = {251, 223, 155},
+    [hCYAN] = {128, 255, 255},
+    [hLRED] = {255, 239, 255},
+    [hBLUE] = {170, 215, 221},
+    [hORNG] = { 20, 208, 255},
+    [ hRED] = {  0, 255, 255},
+    [hMGTA] = {220, 255, 255},
+    [hYELO] = { 15, 255, 255},
+    [hGREN] = { 50, 255, 255},
+    [hDMGT] = {205, 196, 158}
+    // clang-format on
+};
 
 #endif
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {

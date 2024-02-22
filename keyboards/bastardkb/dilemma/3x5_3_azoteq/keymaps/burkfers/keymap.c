@@ -345,14 +345,14 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 #ifdef ENCODER_MAP_ENABLE
 // clang-format off
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [LAYER_BASE]       = {ENCODER_CCW_CW(KC_WH_D, KC_WH_U),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [LAYER_FUN]        = {ENCODER_CCW_CW(KC_DOWN, KC_UP),    ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
-    [LAYER_NAV]        = {ENCODER_CCW_CW(KC_PGDN, KC_PGUP),  ENCODER_CCW_CW(KC_UP, KC_DOWN)},
-    [LAYER_POINTER]    = {ENCODER_CCW_CW(RGB_HUD, RGB_HUI),  ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
-    [LAYER_NUM]        = {ENCODER_CCW_CW(RGB_VAD, RGB_VAI),  ENCODER_CCW_CW(RGB_SPD, RGB_SPI)},
-    [LAYER_SYM]        = {ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
-    [LAYER_GAME]       = {ENCODER_CCW_CW(KC_WH_D, KC_WH_U),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [LAYER_MACROPAD]   = {ENCODER_CCW_CW(KC_WH_D, KC_WH_U),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_BASE]       = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_FUN]        = {ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
+    [LAYER_NAV]        = {ENCODER_CCW_CW(KC_UP, KC_DOWN)},
+    [LAYER_POINTER]    = {ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
+    [LAYER_NUM]        = {ENCODER_CCW_CW(RGB_SPD, RGB_SPI)},
+    [LAYER_SYM]        = {ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
+    [LAYER_GAME]       = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_MACROPAD]   = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
@@ -368,6 +368,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 #endif
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    printf("record: %u\n", keycode);
 #ifdef MACCEL_ENABLE
     if (!process_record_maccel(keycode, record, MA_STEEPNESS, MA_OFFSET, MA_LIMIT)) {
         return false;
@@ -382,3 +383,22 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 #endif
     return true;
 }
+
+const HSV hsv_colors[] = {
+    // clang-format off
+    [ hOFF] = {  0,   0,   0},
+    [hPRPL] = {205, 255, 255},
+    [hDPRP] = {205, 255, 150},
+    [hPINK] = {251, 223, 255},
+    [hDPNK] = {251, 223, 155},
+    [hCYAN] = {128, 255, 255},
+    [hLRED] = {255, 239, 255},
+    [hBLUE] = {170, 215, 221},
+    [hORNG] = { 20, 208, 255},
+    [ hRED] = {  0, 255, 255},
+    [hMGTA] = {220, 255, 255},
+    [hYELO] = { 15, 255, 255},
+    [hGREN] = { 50, 255, 255},
+    [hDMGT] = {205, 196, 158}
+    // clang-format on
+};
