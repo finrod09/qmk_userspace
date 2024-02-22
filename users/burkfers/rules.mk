@@ -7,8 +7,6 @@ COMMAND_ENABLE = yes
 
 MOUSEKEY_ENABLE = yes
 
-ACHORDION_ENABLE = yes
-
 SRC += $(USER_PATH)/burkfers.c
 
 include $(USER_PATH)/features/rules.mk

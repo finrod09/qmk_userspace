@@ -119,10 +119,10 @@ void keyboard_post_init_user(void) {
 }
 
 void matrix_scan_user(void) {
-#ifdef ACHORDION_ENABLE
-    achordion_task();
-#endif
 #ifdef TAIPO_ENABLE
     taipo_matrix_scan_user();
+#endif
+#ifdef ACHORDION_ENABLE
+    achordion_task();
 #endif
 }
