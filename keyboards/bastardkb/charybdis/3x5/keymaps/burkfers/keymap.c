@@ -281,7 +281,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     }
 }
 
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     switch (combo_index) {
         case game_zx_t:
         case game_rf_g:

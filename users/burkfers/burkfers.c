@@ -126,3 +126,12 @@ void matrix_scan_user(void) {
     achordion_task();
 #endif
 }
+
+__attribute__((weak)) bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record);
+
+bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    if (!combo_should_trigger_km(combo_index, combo, keycode, record)) {
+        return false;
+    }
+    return true;
+}
