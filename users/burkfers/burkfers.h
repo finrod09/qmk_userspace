@@ -25,7 +25,6 @@ enum my_user_keycodes {
 #endif
 
 enum user_layers {
-    //clang-format off
     LAYER_BASE = 0,
     LAYER_BASE2,
     LAYER_BASE3,
@@ -37,7 +36,6 @@ enum user_layers {
     LAYER_SYM,
     LAYER_POINTER,
     LAYER_KM
-    //clang-format on
 };
 
 #define DOTCOMM LT(24, KC_DOT)

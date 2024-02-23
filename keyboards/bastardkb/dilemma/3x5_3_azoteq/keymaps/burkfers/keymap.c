@@ -19,7 +19,9 @@
 #include "quantum.h"
 #include QMK_KEYBOARD_H
 #include "burkfers.h"
-#include "g/keymap_combo.h"
+#ifdef COMBO_ENABLE
+#    include "g/keymap_combo.h"
+#endif
 
 #define TD_BOOT TD(U_TD_BOOT)
 #define TD_CLR TD(U_TD_CLR)
