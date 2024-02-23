@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [LAYER_POINTER] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
-       _______, _______, _______, _______, _______,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
+       _______, _______, _______, _______,   PT_BL,   DPI_MOD, S_D_MOD, _______, _______,  L_LOCK,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        _______, _______, _______, _______, _______,   KC_BTN4, KC_BTN5, _______, _______, _______,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
@@ -370,9 +370,8 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 #endif
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-    printf("record: %u\n", keycode);
 #ifdef MACCEL_ENABLE
-    if (!process_record_maccel(keycode, record, MA_STEEPNESS, MA_OFFSET, MA_LIMIT)) {
+    if (!process_record_maccel(keycode, record, MA_TAKEOFF, MA_GROWTH_RATE, MA_OFFSET, MA_LIMIT)) {
         return false;
     }
     switch (keycode) {

@@ -1,4 +1,5 @@
 #include "action_layer.h"
+#include "process_combo.h"
 #include QMK_KEYBOARD_H // IWYU pragma: keep
 #include "burkfers.h"
 #include "keycodes.h"
@@ -13,9 +14,7 @@ __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef MACCEL_ENABLE
-    if (!process_record_maccel(keycode, record, MA_TAKEOFF, MA_GROWTH_RATE, MA_OFFSET, MA_LIMIT)) {
-        return false;
-    }
+    if (!process_record_maccel(keycode, record, MA_TAKEOFF, MA_GROWTH_RATE, MA_OFFSET, MA_LIMIT)) return false;
     switch (keycode) {
         case MA_TOGG:
             if (record->event.pressed) {
@@ -119,6 +118,7 @@ void keyboard_post_init_user(void) {
     // debug_matrix=true;
     // debug_keyboard=true;
     // debug_mouse=true;
+    setPinOutput(LCD_BL_PIN);
 
 #ifdef QP_ST7735_ENABLE
     keyboard_post_init_painter();

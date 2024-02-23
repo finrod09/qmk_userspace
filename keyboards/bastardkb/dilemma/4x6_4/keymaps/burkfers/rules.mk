@@ -1,6 +1,7 @@
 ENCODER_MAP_ENABLE = yes
 
 MACCEL_ENABLE = yes
+MACCEL_VIA_ENABLE = yes
 
 VIA_ENABLE = yes
 

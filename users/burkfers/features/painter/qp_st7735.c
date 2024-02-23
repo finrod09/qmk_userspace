@@ -1,5 +1,7 @@
 #include <qp.h>
+#include "config.h"
 #include "fonts.qff.h"
+#include "burkfers.h"
 
 static painter_device_t      display;
 static painter_font_handle_t font;
@@ -20,8 +22,25 @@ void keyboard_post_init_painter(void) {
 
     static const char *text = "Hello therea!";
     qp_drawtext(display, 10, 10, font, text);
+}
 
-    //    qp_power(display, false);
-    setPinOutput(LCD_BL_PIN);
-    writePinHigh(LCD_BL_PIN);
+static bool _bl_on;
+
+void toggle_backlight(void) {
+    _bl_on = !_bl_on;
+
+    printf("backligh: %u\n", _bl_on);
+    writePin(LCD_BL_PIN, _bl_on);
+}
+
+bool process_record_painter(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch (keycode) {
+            case PT_BL:
+                dprintf("toggling backlight!\n");
+                toggle_backlight();
+                return false;
+        }
+    }
+    return true;
 }
