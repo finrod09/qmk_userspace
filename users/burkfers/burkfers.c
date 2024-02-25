@@ -137,3 +137,9 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
     }
     return true;
 }
+
+void housekeeping_task_user(void) {
+#ifdef PAINTER_ENABLE
+    housekeeping_task_painter();
+#endif
+}
