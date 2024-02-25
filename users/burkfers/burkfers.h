@@ -14,6 +14,8 @@ enum my_user_keycodes {
     MA_LIMIT,
     MA_TOGG,
 #endif // MACCEL_ENABLE
+    KC_LAYER_BASE,
+    KC_LAYER_BASE2,
     QK_KM
 };
 

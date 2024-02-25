@@ -92,6 +92,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
+        case KC_LAYER_BASE:
+            if (record->event.pressed) {
+                layer_clear();
+                set_single_persistent_default_layer(LAYER_BASE);
+            }
+            return false;
+        case KC_LAYER_BASE2:
+            if (record->event.pressed) {
+                layer_clear();
+                set_single_persistent_default_layer(LAYER_BASE2);
+            }
+            return false;
         default:
             return true; // process elsewhere
     }
@@ -136,4 +148,10 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
         return false;
     }
     return true;
+}
+
+void housekeeping_task_user(void) {
+#ifdef PAINTER_ENABLE
+    housekeeping_task_painter();
+#endif
 }

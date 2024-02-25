@@ -30,6 +30,9 @@
 #ifdef QP_ST7735_ENABLE
 #    include "features/painter/qp_st7735.h" // IWYU pragma: keep
 #endif
+#ifdef PAINTER_ENABLE
+#    include "features/painter/painter_common.h" // IWYU pragma: keep
+#endif
 
 #ifdef MACCEL_ENABLE
 #    include "features/maccel/maccel.h" // IWYU pragma: keep
