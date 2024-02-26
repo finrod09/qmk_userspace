@@ -34,3 +34,7 @@
 #ifdef MACCEL_ENABLE
 #    include "features/maccel/maccel.h" // IWYU pragma: keep
 #endif
+
+#ifdef TAIPO_ENABLE
+#    include "features/taipo/taipo.h"
+#endif

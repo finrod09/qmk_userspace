@@ -29,3 +29,8 @@ ifeq ($(strip $(QP_ST7735_ENABLE)), yes)
 	include $(USER_PATH)/features/painter/rules.mk
 	OPT_DEFS += -DQP_ST7735_ENABLE
 endif
+
+ifeq ($(strip $(TAIPO_ENABLE)), yes)
+	SRC += $(USER_PATH)/features/taipo/taipo.c
+	OPT_DEFS += -DTAIPO_ENABLE
+endif

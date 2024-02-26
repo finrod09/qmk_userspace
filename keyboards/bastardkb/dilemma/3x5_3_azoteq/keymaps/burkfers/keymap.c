@@ -61,6 +61,12 @@ enum km_layers { LAYER_MACROPAD = LAYER_KM };
 #define THUMR1 LT(LAYER_NUM, KC_ENT)
 #define THUMR2 LT(LAYER_SYM, KC_BSPC)
 
+#ifdef TAIPO_ENABLE
+#    define TTAIPO TO(LAYER_TAIPO)
+#else
+#    define TTAIPO KC_NO
+#endif
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT_wrapper(
@@ -86,6 +92,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT), KC_MUTE
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
+#ifdef TAIPO_ENABLE
+  [LAYER_TAIPO] = LAYOUT_wrapper(
+  // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
+          KC_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(LAYER_BASE),
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+        TP_TLP,  TP_TLR,  TP_TLM,  TP_TLI, XXXXXXX,    XXXXXXX,  TP_TRI,  TP_TRM,  TP_TRR,  TP_TRP,
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+        TP_BLP,  TP_BLR,  TP_BLM,  TP_BLI, XXXXXXX,    XXXXXXX,  TP_BRI,  TP_BRM,  TP_BRR,  TP_BRP,
+  // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
+                         XXXXXXX,  TP_LIT,  TP_LOT,     TP_ROT,  TP_RIT, XXXXXXX
+  //                   ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+#endif
   [LAYER_NUM] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
        KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,    XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, TD_SYSR,
@@ -100,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       DF_QWER, XXXXXXX, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       DF_QWER,  TTAIPO, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,   MCRPD,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
@@ -204,6 +223,19 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      hMGTA, hCYAN, hYELO,    hGREN, hBLUE,  hOFF
   //               ╰─────────────────────╯ ╰──────────────╯
   ),
+#ifdef TAIPO_ENABLE
+  [LAYER_TAIPO] = LAYOUT_wrapper(
+  // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+       hDMGT, hDMGT, hDMGT, hDMGT,  hOFF,     hOFF, hDMGT, hDMGT, hDMGT, hDMGT,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+       hDMGT, hDMGT, hDMGT, hDMGT,  hOFF,     hOFF, hDMGT, hDMGT, hDMGT, hDMGT,
+  // ╰───────────────────────────────────┤ ├────────────────────────────────────╯
+                      hOFF, hDMGT, hDMGT,    hDMGT, hDMGT,  hOFF
+  //               ╰─────────────────────╯ ╰──────────────╯
+  ),
+#endif
   [LAYER_NUM] = LAYOUT_wrapper(
   // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
        hCYAN, hBLUE, hBLUE, hBLUE, hCYAN,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
@@ -400,6 +432,6 @@ const HSV hsv_colors[] = {
     [hMGTA] = {220, 255, 255},
     [hYELO] = { 15, 255, 255},
     [hGREN] = { 50, 255, 255},
-    [hDMGT] = {205, 196, 158}
+    [hDMGT] = {205, 196, 140}
     // clang-format on
 };
