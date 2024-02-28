@@ -35,6 +35,6 @@
 #    include "features/maccel/maccel.h" // IWYU pragma: keep
 #endif
 
-#ifdef TAIPO_ENABLE
+#ifdef ALT_LAYOUT_taipo
 #    include "features/taipo/taipo.h"
 #endif

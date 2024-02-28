@@ -61,10 +61,10 @@ enum km_layers { LAYER_MACROPAD = LAYER_KM };
 #define THUMR1 LT(LAYER_NUM, KC_ENT)
 #define THUMR2 LT(LAYER_SYM, KC_BSPC)
 
-#ifdef TAIPO_ENABLE
-#    define TTAIPO TO(LAYER_TAIPO)
+#ifdef ALT_LAYOUT_taipo
+#    define ALT_LYT TO(LAYER_TAIPO)
 #else
-#    define TTAIPO KC_NO
+#    define ALT_LYT KC_NO
 #endif
 
 // clang-format off
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT), KC_MUTE
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
-#ifdef TAIPO_ENABLE
+#ifdef ALT_LAYOUT_taipo
   [LAYER_TAIPO] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
           KC_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(LAYER_BASE),
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       DF_QWER,  TTAIPO, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       DF_QWER, ALT_LYT, DF_CANA, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,   MCRPD,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
@@ -223,7 +223,7 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      hMGTA, hCYAN, hYELO,    hGREN, hBLUE,  hOFF
   //               ╰─────────────────────╯ ╰──────────────╯
   ),
-#ifdef TAIPO_ENABLE
+#ifdef ALT_LAYOUT_taipo
   [LAYER_TAIPO] = LAYOUT_wrapper(
   // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
         hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,

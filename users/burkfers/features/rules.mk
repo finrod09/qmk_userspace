@@ -30,7 +30,10 @@ ifeq ($(strip $(QP_ST7735_ENABLE)), yes)
 	OPT_DEFS += -DQP_ST7735_ENABLE
 endif
 
-ifeq ($(strip $(TAIPO_ENABLE)), yes)
+ifneq ($(strip $(ALT_LAYOUT)),)
+	OPT_DEFS += -DALT_LAYOUT_$(ALT_LAYOUT)
+endif
+ifeq ($(strip $(ALT_LAYOUT)), taipo)
 	SRC += $(USER_PATH)/features/taipo/taipo.c
 	OPT_DEFS += -DTAIPO_ENABLE
 endif

@@ -16,4 +16,4 @@ QP_ST7735_ENABLE = yes
 
 CONSOLE_ENABLE = yes
 
-TAIPO_ENABLE = yes
+ALT_LAYOUT = taipo

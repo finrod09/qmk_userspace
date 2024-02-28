@@ -14,7 +14,7 @@ enum my_user_keycodes {
     MA_LIMIT,
     MA_TOGG,
 #endif // MACCEL_ENABLE
-#ifdef TAIPO_ENABLE
+#ifdef ALT_LAYOUT_taipo
     TP_TLP,
     TP_TLR,
     TP_TLM,
@@ -66,7 +66,7 @@ enum user_layers {
     LAYER_BASE = 0,
     LAYER_BASE2,
     LAYER_BASE3,
-#ifdef TAIPO_ENABLE
+#ifdef ALT_LAYOUT_taipo
     LAYER_TAIPO,
 #endif
     LAYER_GAME,
