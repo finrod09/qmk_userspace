@@ -61,8 +61,8 @@ enum km_layers { LAYER_MACROPAD = LAYER_KM };
 #define THUMR1 LT(LAYER_NUM, KC_ENT)
 #define THUMR2 LT(LAYER_SYM, KC_BSPC)
 
-#ifdef ALT_LAYOUT_taipo
-#    define ALT_LYT TO(LAYER_TAIPO)
+#ifdef ALT_LAYOUT_ENABLE
+#    define ALT_LYT TO(LAYER_ALT_LAYOUT)
 #else
 #    define ALT_LYT KC_NO
 #endif
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 #ifdef ALT_LAYOUT_taipo
-  [LAYER_TAIPO] = LAYOUT_wrapper(
+  [LAYER_ALT_LAYOUT] = LAYOUT_wrapper(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
           KC_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(LAYER_BASE),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
@@ -102,6 +102,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TP_BLP,  TP_BLR,  TP_BLM,  TP_BLI, XXXXXXX,    XXXXXXX,  TP_BRI,  TP_BRM,  TP_BRR,  TP_BRP,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
                          XXXXXXX,  TP_LIT,  TP_LOT,     TP_ROT,  TP_RIT, XXXXXXX
+  //                   ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+#endif
+#ifdef ALT_LAYOUT_asetniop
+  [LAYER_ALT_LAYOUT] = LAYOUT_wrapper(
+  // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(LAYER_BASE),
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+          KC_A,    KC_S,    KC_E,    KC_T, XXXXXXX,    XXXXXXX,    KC_N,    KC_I,    KC_O,    KC_P,
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
+                         XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 #endif
@@ -224,7 +237,7 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //               ╰─────────────────────╯ ╰──────────────╯
   ),
 #ifdef ALT_LAYOUT_taipo
-  [LAYER_TAIPO] = LAYOUT_wrapper(
+  [LAYER_ALT_LAYOUT] = LAYOUT_wrapper(
   // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
         hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
   // ├───────────────────────────────────┤ ├────────────────────────────────────┤
@@ -233,6 +246,19 @@ const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
        hDMGT, hDMGT, hDMGT, hDMGT,  hOFF,     hOFF, hDMGT, hDMGT, hDMGT, hDMGT,
   // ╰───────────────────────────────────┤ ├────────────────────────────────────╯
                       hOFF, hDMGT, hDMGT,    hDMGT, hDMGT,  hOFF
+  //               ╰─────────────────────╯ ╰──────────────╯
+  ),
+#endif
+#ifdef ALT_LAYOUT_asetniop
+  [LAYER_ALT_LAYOUT] = LAYOUT_wrapper(
+  // ╭───────────────────────────────────╮ ╭────────────────────────────────────╮
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+       hDMGT, hDMGT, hDMGT, hDMGT,  hOFF,     hOFF, hDMGT, hDMGT, hDMGT, hDMGT,
+  // ├───────────────────────────────────┤ ├────────────────────────────────────┤
+        hOFF,  hOFF,  hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF,  hOFF,  hOFF,
+  // ╰───────────────────────────────────┤ ├────────────────────────────────────╯
+                      hOFF,  hOFF,  hOFF,     hOFF,  hOFF,  hOFF
   //               ╰─────────────────────╯ ╰──────────────╯
   ),
 #endif

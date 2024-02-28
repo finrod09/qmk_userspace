@@ -66,8 +66,8 @@ enum user_layers {
     LAYER_BASE = 0,
     LAYER_BASE2,
     LAYER_BASE3,
-#ifdef ALT_LAYOUT_taipo
-    LAYER_TAIPO,
+#ifdef ALT_LAYOUT_ENABLE
+    LAYER_ALT_LAYOUT,
 #endif
     LAYER_GAME,
     LAYER_NUM,

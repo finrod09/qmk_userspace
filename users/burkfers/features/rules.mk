@@ -32,8 +32,10 @@ endif
 
 ifneq ($(strip $(ALT_LAYOUT)),)
 	OPT_DEFS += -DALT_LAYOUT_$(ALT_LAYOUT)
+	OPT_DEFS += -DALT_LAYOUT_ENABLE
 endif
 ifeq ($(strip $(ALT_LAYOUT)), taipo)
 	SRC += $(USER_PATH)/features/taipo/taipo.c
-	OPT_DEFS += -DTAIPO_ENABLE
+else ifeq ($(strip $(ALT_LAYOUT)), asetniop)
+	SRC += $(USER_PATH)/features/asetniop/engine.c
 endif

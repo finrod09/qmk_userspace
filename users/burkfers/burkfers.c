@@ -13,9 +13,16 @@ __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-#ifdef TAIPO_ENABLE
-    if (IS_LAYER_ON(LAYER_TAIPO)) {
+#ifdef ALT_LAYOUT_taipo
+    if (IS_LAYER_ON(LAYER_ALT_LAYOUT)) {
         if(!taipo_process_record_user(keycode, record)) {
+            return false;
+        }
+    }
+#endif
+#ifdef ALT_LAYOUT_asetniop
+    if (IS_LAYER_ON(LAYER_ALT_LAYOUT)) {
+        if (!process_record_engine(keycode, record)) {
             return false;
         }
     }
@@ -131,8 +138,11 @@ void keyboard_post_init_user(void) {
 }
 
 void matrix_scan_user(void) {
-#ifdef TAIPO_ENABLE
+#ifdef ALT_LAYOUT_taipo
     taipo_matrix_scan_user();
+#endif
+#ifdef ALT_LAYOUT_asetniop
+    matrix_scan_engine();
 #endif
 #ifdef ACHORDION_ENABLE
     achordion_task();

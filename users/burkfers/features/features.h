@@ -38,3 +38,7 @@
 #ifdef ALT_LAYOUT_taipo
 #    include "features/taipo/taipo.h"
 #endif
+#ifdef ALT_LAYOUT_asetniop
+#    include "features/asetniop/engine_callbacks.h"
+#    include "features/asetniop/keymap_engine.h"
+#endif
