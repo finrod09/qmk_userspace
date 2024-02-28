@@ -403,7 +403,7 @@ const HSV hsv_colors[] = {
     [hMGTA] = {220, 255, 255},
     [hYELO] = { 15, 255, 255},
     [hGREN] = { 50, 255, 255},
-    [hDMGT] = {205, 196, 158}
+    [hDMGT] = {205, 196,  90}
     // clang-format on
 };
 

@@ -25,7 +25,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 } else {
                     uint8_t color = pgm_read_byte(&ledmaps[layer][row][col]);
                     HSV     hsv   = hsv_colors[color];
-                    if (hsv.s > 0) hsv.v = rgb_matrix_config.hsv.v;
+                    if (hsv.s > 0) hsv.v = (uint8_t)(hsv.v * (rgb_matrix_config.hsv.v / 255.0f));
                     RGB rgb = hsv_to_rgb(hsv);
                     rgb_matrix_set_color(index, rgb.r, rgb.g, rgb.b);
                 }
