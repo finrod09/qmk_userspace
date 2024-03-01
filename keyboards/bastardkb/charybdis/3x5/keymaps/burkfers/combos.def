@@ -14,6 +14,7 @@ COMB(capsword,              CAPS_WORD_LOCK,            LSFT_T(KC_F), RSFT_T(KC_J
 
 COMB(mouse2,                KC_BTN2,                   KC_N, KC_H)
 COMB(mouse1,                KC_BTN1,                   KC_M, RSFT_T(KC_J))
+COMB(mouse3,                KC_BTN3,                   RGUI_T(KC_QUOT), KC_SLSH)
 COMB(sniping,               SNIPING,                   KC_M, KC_COMM)
 COMB(dragscroll,            DRGSCRL,                   KC_COMM, KC_DOT)
 COMB(caretscroll,           PM_MO(PM_CARET),           KC_DOT, LALT_T(KC_L))
