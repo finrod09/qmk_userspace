@@ -17,7 +17,7 @@
 #pragma once
 
 /* Charybdis-specific features. */
-#define DILEMMA_MINIMUM_DEFAULT_DPI 400
+#define DILEMMA_MINIMUM_DEFAULT_DPI 100
 #define DILEMMA_DEFAULT_DPI_CONFIG_STEP 100
 #define DILEMMA_MINIMUM_SNIPING_DPI 100
 #define DILEMMA_SNIPING_DPI_CONFIG_STEP 100
@@ -40,19 +40,13 @@
 
 #define ONESHOT_TAP_TOGGLE 5 /* Tapping this number of times holds the key until tapped once again. */
 
-#ifdef MACCEL_ENABLE
-#    define MACCEL_STEEPNESS 1.0 // steepness of accel curve
-#    define MACCEL_OFFSET 0.8    // X-offset of accel curve
-#    define MACCEL_LIMIT 3.5     // maximum scale factor
-#    define MACCEL_DEBUG
-
-#    define EECONFIG_USER_DATA_SIZE 20
-#endif
-
-#define MOUSE_EXENDED_REPORT
 #undef POINTING_DEVICE_TASK_THROTTLE_MS
-#define POINTING_DEVICE_TASK_THROTTLE_MS 10
+#define POINTING_DEVICE_TASK_THROTTLE_MS 2
 
 #define POINTING_DEVICE_DEBUG
 
 #define SELECT_SOFT_SERIAL_SPEED 4
+
+#define MACCEL_LIMIT 0.5
+
+#define RGB_MATRIX_TIMEOUT 60000
