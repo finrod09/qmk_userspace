@@ -37,19 +37,6 @@
 #undef POINTING_DEVICE_TASK_THROTTLE_MS
 #define POINTING_DEVICE_TASK_THROTTLE_MS 8
 
-// wimads vals
-//  #define MACCEL_STEEPNESS 1.0 // steepness of accel curve
-//  #define MACCEL_OFFSET 0.8    // X-offset of accel curve
-//  #define MACCEL_LIMIT 3.5     // maximum scale factor
-// burkfers vals
-#define MACCEL_STEEPNESS 1.0 // steepness of accel curve
-#define MACCEL_OFFSET 1.0    // X-offset of accel curve
-#define MACCEL_LIMIT 6.0     // maximum scale factor
-#define MACCEL_DEBUG
-#define MACCEL_USE_KEYCODES
-
 #ifdef VIA_ENABLE
 #    define DYNAMIC_KEYMAP_LAYER_COUNT 10
 #endif
-
-#define EECONFIG_USER_DATA_SIZE 20
