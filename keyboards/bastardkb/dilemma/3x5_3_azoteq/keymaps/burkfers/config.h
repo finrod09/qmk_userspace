@@ -46,6 +46,7 @@
 #define POINTING_DEVICE_DEBUG
 
 #define SELECT_SOFT_SERIAL_SPEED 4
+// #define SERIAL_DEBUG
 
 #define MACCEL_LIMIT 0.5
 
