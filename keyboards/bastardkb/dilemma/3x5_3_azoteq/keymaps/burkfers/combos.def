@@ -13,3 +13,4 @@ COMB(media,                 LT(LAYER_MEDIA, KC_ESC),   QK_LEAD, OSM(MOD_LSFT))
 
 COMB(game_rf_g,             KC_G,                      KC_R, KC_F)
 COMB(game_fv_b,             KC_B,                      KC_F, KC_V)
+COMB(game_esc,              KC_ESC,                    KC_LCTL, KC_Z, KC_X)

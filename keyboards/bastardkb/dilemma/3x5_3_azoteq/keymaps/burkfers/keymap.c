@@ -337,6 +337,7 @@ bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keyc
              if (layer_state_is(LAYER_QWERTY)) {
             return false;
         }
+        case game_esc:
         case game_rf_g:
         case game_fv_b:
             if (!layer_state_is(LAYER_GAME)) {
