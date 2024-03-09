@@ -1,8 +1,5 @@
-COMB(fndel,                 LT(LAYER_FUN, KC_DEL),     LT(LAYER_NUM, KC_ENT), LT(LAYER_SYM, KC_BSPC))
-COMB(tab,                   LT(LAYER_POINTER, KC_TAB), OSM(MOD_LSFT), LT(LAYER_NAV, KC_SPC))
-
-// COMB(lsft,                  OSM(MOD_LSFT),             KC_F, KC_G)
-// COMB(rsft,                  OSM(MOD_RSFT),             KC_H, KC_J)
+COMB(left_thumb_kludge,     THUML3,                    THUML1, THUML2)
+COMB(right_thumb_kludge,    THUMR3,                    THUMR1, THUMR2)
 
 COMB(qwer_esc,              KC_ESC,                    KC_Z, KC_X, KC_C)
 COMB(qwer_capsword,         CAPS_WORD_LOCK,            LSFT_T(KC_F), RSFT_T(KC_J))

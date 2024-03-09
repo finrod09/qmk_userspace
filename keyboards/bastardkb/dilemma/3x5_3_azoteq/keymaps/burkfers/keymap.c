@@ -19,9 +19,6 @@
 #include "quantum.h"
 #include QMK_KEYBOARD_H
 #include "burkfers.h"
-#ifdef COMBO_ENABLE
-#    include "g/keymap_combo.h"
-#endif
 
 #define TD_BOOT TD(U_TD_BOOT)
 #define TD_CLR TD(U_TD_CLR)
@@ -49,17 +46,21 @@
 #define MCRPD DF(LAYER_MACROPAD)
 
 enum km_layers { LAYER_MACROPAD = LAYER_KM };
-
 #define OS_LGUI OSM(MOD_LGUI)
 #define OS_LALT OSM(MOD_LALT)
 #define OS_LCTL OSM(MOD_LCTL)
 #define OS_LSFT OSM(MOD_LSFT)
 
-#define THUML1 LT(LAYER_MEDIA, KC_ESC)
+#define THUML1 LT(LAYER_NAV, KC_SPC)
 #define THUML2 LT(LAYER_POINTER, KC_TAB)
-#define THUML3 LT(LAYER_NAV, KC_SPC)
+#define THUML3 LT(LAYER_MEDIA, KC_ESC)
 #define THUMR1 LT(LAYER_NUM, KC_ENT)
 #define THUMR2 LT(LAYER_SYM, KC_BSPC)
+#define THUMR3 LT(LAYER_FUN, KC_DEL)
+
+#ifdef COMBO_ENABLE
+#    include "g/keymap_combo.h"
+#endif
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -72,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_Q,    KC_J,    KC_V,    KC_D,    KC_K,       KC_X,    KC_H, KC_SLSH, KC_COMM,  KC_DOT,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
  // LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), QK_REP, LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT), KC_MUTE
-                          THUML1,  THUML2,  THUML3,     THUMR1,  THUMR2, KC_MUTE
+                          KC_BTN3,  THUML2,  THUML1,     THUMR1,  THUMR2, KC_MUTE
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [LAYER_QWERTY] = LAYOUT_wrapper(
@@ -83,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
-                          THUML1,  THUML2,  THUML3,     THUMR1,  THUMR2, KC_MUTE
+                          KC_BTN3,  THUML2,  THUML1,     THUMR1,  THUMR2, KC_MUTE
 // LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_POINTER, KC_TAB),LT(LAYER_NAV, KC_SPC),  LT(LAYER_SYM, KC_ENT),LT(LAYER_NUM,KC_BSPC), KC_MUTE
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
