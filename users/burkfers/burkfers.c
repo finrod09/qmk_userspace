@@ -14,14 +14,7 @@ __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef MACCEL_ENABLE
-    if (!process_record_maccel(keycode, record, MA_TAKEOFF, MA_GROWTH_RATE, MA_OFFSET, MA_LIMIT)) return false;
-    switch (keycode) {
-        case MA_TOGG:
-            if (record->event.pressed) {
-                maccel_toggle_enabled();
-                return false;
-            }
-    }
+    if (!process_record_maccel(keycode, record, MA_TOGGLE, MA_TAKEOFF, MA_GROWTH_RATE, MA_OFFSET, MA_LIMIT)) return false;
 #endif
 #ifdef ACHORDION_ENABLE
     if (!process_achordion(keycode, record)) {

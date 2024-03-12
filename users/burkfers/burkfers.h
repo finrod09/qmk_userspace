@@ -8,6 +8,7 @@ enum my_user_keycodes {
     CAPS_WORD_LOCK,
     L_LOCK,
 #ifdef MACCEL_ENABLE
+    MA_TOGGLE,
     MA_TAKEOFF,
     MA_GROWTH_RATE,
     MA_OFFSET,
@@ -20,13 +21,21 @@ enum my_user_keycodes {
 };
 
 #ifdef MACCEL_ENABLE
+#    define MA_TOG MA_TOGGLE
 #    define MA_TKO MA_TAKEOFF
 #    define MA_GRO MA_GROWTH_RATE
 #    define MA_OFS MA_OFFSET
 #    define MA_LMT MA_LIMIT
+#else
+#    define MA_TOG KC_NO
+#    define MA_TKO KC_NO
+#    define MA_GRO KC_NO
+#    define MA_OFS KC_NO
+#    define MA_LMT KC_NO
 #endif
 
 enum user_layers {
+    // clang-format off
     LAYER_BASE = 0,
     LAYER_BASE2,
     LAYER_BASE3,
@@ -38,6 +47,7 @@ enum user_layers {
     LAYER_SYM,
     LAYER_POINTER,
     LAYER_KM
+    // clang-format on
 };
 
 #define DOTCOMM LT(24, KC_DOT)

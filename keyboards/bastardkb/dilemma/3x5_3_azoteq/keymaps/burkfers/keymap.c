@@ -375,18 +375,6 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 #endif
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-#ifdef MACCEL_ENABLE
-    if (!process_record_maccel(keycode, record, MA_TAKEOFF, MA_GROWTH_RATE, MA_OFFSET, MA_LIMIT)) {
-        return false;
-    }
-    switch (keycode) {
-        case MA_TOGG:
-            if (record->event.pressed) {
-                maccel_toggle_enabled();
-                return false;
-            }
-    }
-#endif
     return true;
 }
 
