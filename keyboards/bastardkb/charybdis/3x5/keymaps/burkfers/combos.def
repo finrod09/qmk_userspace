@@ -2,10 +2,6 @@ COMB(thumbcombo_base_right, THUMR3,                    THUMR1, THUMR2)
 COMB(thumbcombo_nav,        KC_DEL,                    KC_ENT, KC_BSPC)
 COMB(thumbcombo_media,      KC_MUTE,                   KC_MSTP, KC_MPLY)
 
-// COMB(thumbcombo_base_left,  LT(LAYER_POINTER, KC_TAB), LT(LAYER_MEDIA, KC_ESC), LT(LAYER_NAV, KC_SPC))
-COMB(thumbcombo_fun,        KC_TAB,                    KC_SPC, QK_REP)
-COMB(thumbcombo_lead,       QK_LEAD,                   LT(LAYER_NAV, KC_SPC), LT(LAYER_POINTER, KC_TAB))
-
 COMB(game_zx_t,             KC_T,                      KC_Z, KC_X)
 COMB(game_rf_g,             KC_G,                      KC_R, KC_F)
 COMB(game_fv_b,             KC_B,                      KC_F, KC_V)
