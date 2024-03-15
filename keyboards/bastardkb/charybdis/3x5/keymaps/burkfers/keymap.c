@@ -18,7 +18,6 @@
 #include "modifiers.h"
 #include QMK_KEYBOARD_H
 #include "burkfers.h"
-#include "g/keymap_combo.h"
 
 #define TD_BOOT TD(U_TD_BOOT)
 #define TD_CLR TD(U_TD_CLR)
@@ -41,6 +40,17 @@
 
 #define GAME TG(LAYER_GAME)
 
+#define THUML1 LT(LAYER_NAV, KC_SPC)
+#define THUML2 LT(LAYER_POINTER, KC_TAB)
+#define THUML3 LT(LAYER_MEDIA, KC_ESC)
+#define THUMR1 LT(LAYER_NUM, KC_BSPC)
+#define THUMR2 LT(LAYER_SYM, KC_ENT)
+#define THUMR3 LT(LAYER_FUN, KC_DEL)
+
+#ifdef COMBO_ENABLE
+#    include "g/keymap_combo.h"
+#endif
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT_wrapper(
@@ -51,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
- LT(LAYER_MEDIA, KC_ESC),       LT(LAYER_NAV, KC_SPC), LT(LAYER_POINTER, KC_TAB), LT(LAYER_NUM,KC_BSPC),     LT(LAYER_SYM, KC_ENT)
+                          THUML3,  THUML1,  THUML2,     THUMR1,  THUMR2
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
   [LAYER_NUM] = LAYOUT(
@@ -251,12 +261,12 @@ const HSV hsv_colors[] = {
 #endif
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(LAYER_MEDIA, KC_ESC):
-        case LT(LAYER_NAV, KC_SPC):
-        case LT(LAYER_NUM, KC_BSPC):
-        case LT(LAYER_SYM, KC_ENT):
-        case LT(LAYER_POINTER, KC_TAB):
-        case LT(LAYER_FUN, KC_DEL):
+        case THUML1:
+        case THUML2:
+        case THUML3:
+        case THUMR1:
+        case THUMR2:
+        case THUMR3:
             return 0;
         default:
             return QUICK_TAP_TERM;
@@ -268,12 +278,12 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
         return 0;
     } else {
         switch (tap_hold_keycode) {
-            case LT(LAYER_MEDIA, KC_ESC):
-            case LT(LAYER_NAV, KC_SPC):
-            case LT(LAYER_NUM, KC_BSPC):
-            case LT(LAYER_SYM, KC_ENT):
-            case LT(LAYER_POINTER, KC_TAB):
-            case LT(LAYER_FUN, KC_DEL):
+            case THUML1:
+            case THUML2:
+            case THUML3:
+            case THUMR1:
+            case THUMR2:
+            case THUMR3:
                 return 0;
             default:
                 return 600;
