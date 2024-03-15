@@ -8,11 +8,13 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     }
 
     switch (tap_hold_keycode) {
+        case LGUI_T(KC_C):
         case LGUI_T(KC_A):
             if (other_keycode == KC_SPC) {
                 return true;
             }
             break;
+        case RGUI_T(KC_A):
         case RGUI_T(KC_QUOT):
             if (other_keycode == KC_ENT) {
                 return true;

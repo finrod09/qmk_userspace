@@ -7,6 +7,7 @@ COMB(game_rf_g,             KC_G,                      KC_R, KC_F)
 COMB(game_fv_b,             KC_B,                      KC_F, KC_V)
 
 COMB(capsword,              CAPS_WORD_LOCK,            LSFT_T(KC_F), RSFT_T(KC_J))
+COMB(cana_capsword,         CAPS_WORD_LOCK,            LSFT_T(KC_T), RSFT_T(KC_N))
 
 COMB(mouse2,                KC_BTN2,                   KC_N, KC_H)
 COMB(mouse1,                KC_BTN1,                   KC_M, RSFT_T(KC_J))
@@ -14,3 +15,11 @@ COMB(mouse3,                KC_BTN3,                   RGUI_T(KC_QUOT), KC_SLSH)
 COMB(sniping,               SNIPING,                   KC_M, KC_COMM)
 COMB(dragscroll,            DRGSCRL,                   KC_COMM, KC_DOT)
 COMB(caretscroll,           PM_MO(PM_CARET),           KC_DOT, LALT_T(KC_L))
+
+COMB(cana_mouse2,           KC_BTN2,                   KC_M, KC_X)
+COMB(cana_mouse1,           KC_BTN1,                   KC_H, RSFT_T(KC_N))
+COMB(cana_mouse3,           KC_BTN3,                   RGUI_T(KC_A), KC_DOT)
+COMB(cana_dragscroll,       DRGSCRL,                   KC_SLSH, KC_COMM)
+COMB(cana_caretscroll,      PM_MO(PM_CARET),           KC_COMM, LALT_T(KC_I))
+
+COMB(cana_help,             LGUI(LALT(KC_F1)),         KC_J, KC_V, KC_D)

@@ -34,6 +34,10 @@
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 #define LAYER_QWERTY LAYER_BASE
+#define LAYER_CANARY LAYER_BASE2
+
+#define DF_QWER KC_LAYER_BASE
+#define DF_CANA KC_LAYER_BASE2
 
 #define M_NUM LT(LAYER_NUM, KC_M)
 
@@ -63,6 +67,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           THUML3,  THUML1,  THUML2,     THUMR1,  THUMR2
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
+  [LAYER_CANARY] = LAYOUT_wrapper(
+  // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
+          KC_W,  ALG(L),    KC_Y,    KC_P,    KC_B,       KC_Z,    KC_F,    KC_O,  ALG(U), KC_QUOT,
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+               ___GACS_L___(C, R, S, T),      KC_G,       KC_M,      ___GACS_R___(N, E, I, A),
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+          KC_Q,    KC_J,    KC_V,    KC_D,    KC_K,       KC_X,    KC_H, KC_SLSH, KC_COMM,  KC_DOT,
+  // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
+                          THUML3,  THUML1,  THUML2,     THUMR1,  THUMR2
+  //                   ╰───────────────────────────╯ ╰──────────────────╯
+  ),
   [LAYER_NUM] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
        KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,    XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, TD_SYSR,
@@ -77,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       DF_CANA, DF_QWER, XXXXXXX, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
@@ -298,6 +313,17 @@ bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keyc
             if (!layer_state_is(LAYER_GAME)) {
                 return false;
             }
+            break;
+        case cana_mouse2:
+        case cana_mouse1:
+        case cana_mouse3:
+        case cana_dragscroll:
+        case cana_caretscroll:
+        case cana_help:
+            if (!layer_state_is(LAYER_CANARY)) {
+                return false;
+            }
+            break;
     }
 
     return true;
