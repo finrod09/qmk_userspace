@@ -17,7 +17,7 @@
 #pragma once
 
 /* Charybdis-specific features. */
-#define CHARYBDIS_MINIMUM_DEFAULT_DPI 800
+#define CHARYBDIS_MINIMUM_DEFAULT_DPI 1000
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 100
 #define CHARYBDIS_MINIMUM_SNIPING_DPI 100
 #define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 100
@@ -39,4 +39,11 @@
 
 #ifdef VIA_ENABLE
 #    define DYNAMIC_KEYMAP_LAYER_COUNT 10
+#endif
+
+#ifdef MACCEL_ENABLE
+#    define MACCEL_TAKEOFF 2.0
+#    define MACCEL_GROWTH_RATE 0.25
+#    define MACCEL_OFFSET 2.2
+#    define MACCEL_LIMIT 0.1
 #endif
