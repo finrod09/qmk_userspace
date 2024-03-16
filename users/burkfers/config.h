@@ -16,5 +16,5 @@
 #        undef PRINTF_SUPPORT_DECIMAL_SPECIFIERS
 #        define PRINTF_SUPPORT_DECIMAL_SPECIFIERS 1
 #    endif
-#    define MOUSE_EXENDED_REPORT
+#    define MOUSE_EXTENDED_REPORT
 #endif
