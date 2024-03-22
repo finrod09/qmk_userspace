@@ -97,6 +97,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(LAYER_BASE2);
             }
             return false;
+        case KC_LAYER_BASE3:
+            if (record->event.pressed) {
+                layer_clear();
+                set_single_persistent_default_layer(LAYER_BASE3);
+            }
+            return false;
         default:
             return true; // process elsewhere
     }

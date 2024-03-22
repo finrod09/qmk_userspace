@@ -35,9 +35,11 @@
 
 #define LAYER_QWERTY LAYER_BASE
 #define LAYER_CANARY LAYER_BASE2
+#define LAYER_APTMAK LAYER_BASE3
 
 #define DF_QWER KC_LAYER_BASE
 #define DF_CANA KC_LAYER_BASE2
+#define DF_APTM KC_LAYER_BASE3
 
 #define M_NUM LT(LAYER_NUM, KC_M)
 
@@ -49,6 +51,8 @@
 #define THUMR1 LT(LAYER_NUM, KC_BSPC)
 #define THUMR2 LT(LAYER_SYM, KC_ENT)
 #define THUMR3 LT(LAYER_FUN, KC_DEL)
+
+#define HLPAPTM LGUI(LALT(KC_F2))
 
 #ifdef COMBO_ENABLE
 #    include "g/keymap_combo.h"
@@ -78,6 +82,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           THUML3,  THUML1,  THUML2,     THUMR1,  THUMR2
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
+  [LAYER_APTMAK] = LAYOUT_wrapper(
+  // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
+        QK_REP,  ALG(W),    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,  ALG(Y), KC_QUOT,
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+          KC_R,    KC_S,    KC_T,    KC_H,    KC_K,       KC_X,    KC_N,    KC_A,    KC_I,    KC_O,
+  // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
+       HLPAPTM,    KC_C,    KC_G,    KC_D,    KC_Q,       KC_Z,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
+  // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
+                          THUML3,  THUML1,  THUML2,     THUMR1,    LT(LAYER_SYM, KC_E)
+  //                   ╰───────────────────────────╯ ╰──────────────────╯
+  ),
   [LAYER_NUM] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
        KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,    XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, TD_SYSR,
@@ -92,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       DF_CANA, DF_QWER, XXXXXXX, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       DF_CANA, DF_QWER, DF_APTM, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
@@ -288,7 +303,9 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    if (IS_LAYER_ON(LAYER_POINTER)) {
+    if (IS_LAYER_ON(LAYER_APTMAK)) {
+        return 0;
+    } else if (IS_LAYER_ON(LAYER_POINTER)) {
         return 0;
     } else {
         switch (tap_hold_keycode) {
@@ -307,6 +324,16 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 
 bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     switch (combo_index) {
+        case capsword:
+        case mouse2:
+        case mouse1:
+        case mouse3:
+        case dragscroll:
+        case caretscroll:
+            if (!layer_state_is(LAYER_BASE)) {
+                return false;
+            }
+            break;
         case game_zx_t:
         case game_rf_g:
         case game_fv_b:
@@ -314,6 +341,7 @@ bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keyc
                 return false;
             }
             break;
+        case cana_capsword:
         case cana_mouse2:
         case cana_mouse1:
         case cana_mouse3:
@@ -321,6 +349,28 @@ bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keyc
         case cana_caretscroll:
         case cana_help:
             if (!layer_state_is(LAYER_CANARY)) {
+                return false;
+            }
+            break;
+        case aptmak_v:
+        case aptmak_q:
+        case aptmak_z:
+        case aptmak_lsft:
+        case aptmak_lbrc:
+        case aptmak_lprn:
+        case aptmak_lcbr:
+        case aptmak_lt:
+        case aptmak_rsft:
+        case aptmak_rbrc:
+        case aptmak_rprn:
+        case aptmak_rcbr:
+        case aptmak_gt:
+        case aptmak_mouse2:
+        case aptmak_mouse1:
+        case aptmak_mouse3:
+        case aptmak_dragscroll:
+        case aptmak_caretscroll:
+            if (!layer_state_is(LAYER_APTMAK)) {
                 return false;
             }
             break;

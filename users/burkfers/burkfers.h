@@ -17,6 +17,7 @@ enum my_user_keycodes {
 #endif // MACCEL_ENABLE
     KC_LAYER_BASE,
     KC_LAYER_BASE2,
+    KC_LAYER_BASE3,
     QK_KM
 };
 
