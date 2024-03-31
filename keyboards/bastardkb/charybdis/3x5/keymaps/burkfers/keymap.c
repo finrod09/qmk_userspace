@@ -176,6 +176,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 #ifdef RGB_MATRIX_ENABLE
+#    ifdef LEDMAP_ENABLE
 // clang-format off
 const uint8_t PROGMEM ledmaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_QWERTY] = LAYOUT(
@@ -286,8 +287,9 @@ const HSV hsv_colors[] = {
     [hDMGT] = {205, 196, 158}
     // clang-format on
 };
-
+#    endif
 #endif
+
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case THUML1:
