@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
         QK_REP,  ALG(W),    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,    KC_U,  ALG(Y), KC_QUOT,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-          KC_R,    KC_S,    KC_T,    KC_H,    KC_K,       KC_X,    KC_N,    KC_A,    KC_I,    KC_O,
+        ___GACS_L___(R,    S,    T,    H),    KC_K,       KC_X,    ___GACS_R___(N,   A,   I,    O),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        HLPAPTM,    KC_C,    KC_G,    KC_D,    KC_Q,       KC_Z,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
@@ -169,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT,    GAME,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                            KC_ESC,  KC_SPC, M_NUM,   _______, MO(LAYER_NAV)
+                            KC_ESC,  KC_SPC, M_NUM,   _______,  THUMR2
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
@@ -357,21 +357,23 @@ bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keyc
         case aptmak_v:
         case aptmak_q:
         case aptmak_z:
-        case aptmak_lsft:
         case aptmak_lbrc:
         case aptmak_lprn:
-        case aptmak_lcbr:
-        case aptmak_lt:
-        case aptmak_rsft:
         case aptmak_rbrc:
         case aptmak_rprn:
-        case aptmak_rcbr:
-        case aptmak_gt:
         case aptmak_mouse2:
         case aptmak_mouse1:
         case aptmak_mouse3:
         case aptmak_dragscroll:
         case aptmak_caretscroll:
+        case aptmak_ent:
+        case aptmak_thumbcombo_right:
+        case aptmak_capsword:
+        case aptmak_bsls:
+        case aptmak_tab:
+        case aptmak_del:
+        case aptmak_scln:
+        case aptmak_grv:
             if (!layer_state_is(LAYER_APTMAK)) {
                 return false;
             }
