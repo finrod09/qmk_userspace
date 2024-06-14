@@ -31,7 +31,7 @@ COMB(aptmak_lprn,           KC_LPRN,                   LCTL_T(KC_T), LSFT_T(KC_H
 COMB(aptmak_rbrc,           KC_RBRC,                   RCTL_T(KC_A), LALT_T(KC_I))
 COMB(aptmak_rprn,           KC_RPRN,                   RSFT_T(KC_N), RCTL_T(KC_A))
 COMB(aptmak_ent,            KC_ENT,                    RSFT_T(KC_N), RCTL_T(KC_A), LALT_T(KC_I))
-COMB(aptmak_thumbcombo_right,        LT(LAYER_FUN, KC_DEL),                   THUMR1,    LT(LAYER_SYM, KC_E))
+// COMB(aptmak_thumbcombo_right,        LT(LAYER_FUN, KC_DEL),                   THUMR1,    LT(LAYER_SYM, KC_E))
 COMB(aptmak_bsls,           KC_BSLS,                    KC_M, KC_COMM)
 COMB(aptmak_tab,            KC_TAB,                    LALT_T(KC_S), LSFT_T(KC_H))
 COMB(aptmak_del,            KC_DEL,                     RSFT_T(KC_N), LALT_T(KC_I))

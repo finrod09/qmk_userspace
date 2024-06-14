@@ -37,11 +37,14 @@
 #define LAYER_CANARY LAYER_BASE2
 #define LAYER_APTMAK LAYER_BASE3
 
+#define LAYER_SYMNUM LAYER_NUM
+#define LAYER_NUM2 LAYER_SYM
+
 #define DF_QWER KC_LAYER_BASE
 #define DF_CANA KC_LAYER_BASE2
 #define DF_APTM KC_LAYER_BASE3
 
-#define M_NUM LT(LAYER_NUM, KC_M)
+#define M_NUM2 LT(LAYER_NUM2, KC_M)
 
 #define GAME TG(LAYER_GAME)
 
@@ -49,7 +52,7 @@
 #define THUML2 LT(LAYER_POINTER, KC_TAB)
 #define THUML3 LT(LAYER_MEDIA, KC_ESC)
 #define THUMR1 LT(LAYER_NUM, KC_BSPC)
-#define THUMR2 LT(LAYER_SYM, KC_ENT)
+#define THUMR2 LT(LAYER_SYMNUM, KC_ENT)
 #define THUMR3 LT(LAYER_FUN, KC_DEL)
 
 #define HLPAPTM LGUI(LALT(KC_F2))
@@ -90,30 +93,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
        HLPAPTM,    KC_C,    KC_G,    KC_D,    KC_Q,       KC_Z,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
-                          THUML3,  THUML1,  THUML2,     THUMR1,    LT(LAYER_SYM, KC_E)
+                 MO(LAYER_MEDIA),  THUML1,  LT(LAYER_NAV, KC_ESC),   LT(LAYER_SYMNUM, KC_BSPC), LT(LAYER_SYMNUM, KC_E)
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
-  [LAYER_NUM] = LAYOUT(
+  [LAYER_SYMNUM] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,    XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, TD_SYSR,
+       KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_SLSH,    KC_7,    KC_8,    KC_9, KC_COMM,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,    XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+       KC_PLUS,  KC_EQL, KC_UNDS, KC_MINS, KC_CIRC,       KC_0, RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), RGUI_T(KC_DOT),
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-        KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,    XXXXXXX, XXXXXXX,  TD_CLR, TD_MAKE, TD_BOOT,
+       XXXXXXX, KC_COLN, KC_ASTR, KC_AMPR, KC_BSLS,    TD_MAKE,    KC_1,    KC_2,    KC_3, TD_BOOT,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
-                         DOTCOMM,    KC_0, KC_MINS,    XXXXXXX, XXXXXXX
+                         DOTCOMM, KC_BSPC, _______,    _______, XXXXXXX
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [LAYER_NAV] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       DF_CANA, DF_QWER, DF_APTM, XXXXXXX, XXXXXXX,    C(KC_Y), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),
+       LGUI(KC_Q),DF_QWER,DF_APTM,XXXXXXX, KC_VOLU,       KC_H,    KC_J,    KC_K,    KC_L, KC_HOME,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_DEL,
+       KC_LGUI, KC_LALT, KC_LCTL, LSFT_T(KC_TAB),KC_VOLD,KC_LEFT,KC_DOWN,  KC_UP, KC_RGHT,  KC_END,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       TD_BOOT, TD_MAKE,  TD_CLR, XXXXXXX,    GAME,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
+       TD_BOOT, TD_MAKE,  TD_CLR,  KC_INS,    GAME,    XXXXXXX, KC_PGUP, KC_PGDN,  KC_END,  KC_INS,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
-                         XXXXXXX, XXXXXXX, XXXXXXX,    KC_BSPC,  KC_ENT
+                         XXXXXXX, XXXXXXX, _______,    _______,  KC_SPC
   //             ╰─────────────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -123,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
         KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,    XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-        KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,    XXXXXXX, XXXXXXX,  TD_CLR, TD_MAKE, TD_BOOT,
+        KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,    XXXXXXX, KC_PSCR, LGUI(KC_PSCR), XXXXXXX, XXXXXXX,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
                           KC_APP,  KC_SPC,  QK_REP,    XXXXXXX, XXXXXXX
   //                   ╰──────────────────────────╯ ╰──────────────────╯
@@ -139,13 +142,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          XXXXXXX, XXXXXXX, XXXXXXX,    KC_MSTP, KC_MPLY
   //             ╰─────────────────────────────────╯ ╰──────────────────╯
   ),
-     [LAYER_SYM] = LAYOUT(
+     [LAYER_NUM2] = LAYOUT(
   // ╭─────────────────────────────────────────────╮ ╭──────────────────────────────────────────────╮
-       KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,    XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, TD_SYSR,
+       KC_LCBR,   KC_7,     KC_8,    KC_9, KC_RCBR,    XXXXXXX, XXXXXXX, XXXXXXX, KC_ALGR, TD_SYSR,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS,    XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+       KC_COLN,   KC_4,     KC_5,    KC_6, KC_PLUS,    XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
   // ├─────────────────────────────────────────────┤ ├──────────────────────────────────────────────┤
-       KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE,    XXXXXXX, XXXXXXX,  TD_CLR, TD_MAKE, TD_BOOT,
+       KC_TILD,   KC_1,     KC_2,    KC_3, KC_PIPE,    XXXXXXX, XXXXXXX,  TD_CLR, TD_MAKE, TD_BOOT,
   // ╰─────────────────────────────────────────────┤ ├──────────────────────────────────────────────╯
                          KC_LPRN, KC_RPRN, KC_UNDS,    XXXXXXX, XXXXXXX
   //                   ╰───────────────────────────╯ ╰──────────────────╯
@@ -169,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,      KC_N,    KC_M, KC_COMM,  KC_DOT,    GAME,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                            KC_ESC,  KC_SPC, M_NUM,   _______,  THUMR2
+                            KC_ESC,  KC_SPC, M_NUM2,   _______,  THUMR2
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
@@ -367,7 +370,7 @@ bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keyc
         case aptmak_dragscroll:
         case aptmak_caretscroll:
         case aptmak_ent:
-        case aptmak_thumbcombo_right:
+        // case aptmak_thumbcombo_right:
         case aptmak_capsword:
         case aptmak_bsls:
         case aptmak_tab:
@@ -381,6 +384,10 @@ bool combo_should_trigger_km(uint16_t combo_index, combo_t *combo, uint16_t keyc
     }
 
     return true;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+   return update_tri_layer_state(state, LAYER_SYMNUM, LAYER_NAV, LAYER_FUN);
 }
 
 #ifdef MACCEL_ENABLE
